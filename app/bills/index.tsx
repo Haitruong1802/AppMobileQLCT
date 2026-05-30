@@ -36,11 +36,11 @@ import { canCreate } from '../../src/services/premium';
 import { usePremiumTier } from '../../src/store/usePremium';
 import { ProUpgradeModal } from '../../src/components/ProUpgradeModal';
 
-const REPEAT_OPTIONS: { value: Bill['repeat_period']; label: string }[] = [
-  { value: null, label: 'Không lặp' },
-  { value: 'monthly', label: 'Hàng tháng' },
-  { value: 'quarterly', label: '3 tháng' },
-  { value: 'yearly', label: 'Hàng năm' },
+const REPEAT_OPTIONS: { value: Bill['repeat_period']; labelKey: string }[] = [
+  { value: null, labelKey: 'bills.repeatNone' },
+  { value: 'monthly', labelKey: 'bills.repeatMonthly' },
+  { value: 'quarterly', labelKey: 'bills.repeatQuarterly' },
+  { value: 'yearly', labelKey: 'bills.repeatYearly' },
 ];
 
 interface Draft {
@@ -271,10 +271,10 @@ export default function BillsManage() {
                       {b.repeat_period
                         ? ` · ${
                             b.repeat_period === 'monthly'
-                              ? 'hàng tháng'
+                              ? t('bills.repeatMonthly').toLowerCase()
                               : b.repeat_period === 'quarterly'
-                              ? '3 tháng'
-                              : 'hàng năm'
+                              ? t('bills.repeatQuarterly')
+                              : t('bills.repeatYearly').toLowerCase()
                           }`
                         : ''}
                     </Text>
@@ -325,17 +325,17 @@ export default function BillsManage() {
                   {editing.id ? t('bills.edit') : t('bills.add')}
                 </Text>
 
-                <Text style={styles.label}>Tên hoá đơn</Text>
+                <Text style={styles.label}>{t('bills.nameLabel')}</Text>
                 <TextInput
                   style={styles.input}
                   value={editing.name}
                   onChangeText={(v) => setEditing({ ...editing, name: v })}
-                  placeholder="VD: Tiền nhà, Internet FPT, Gói data Viettel..."
+                  placeholder={t('bills.namePlaceholder')}
                   placeholderTextColor="#9ca3af"
                   maxLength={50}
                 />
 
-                <Text style={styles.label}>Số tiền</Text>
+                <Text style={styles.label}>{t('bills.amountLabel')}</Text>
                 <View style={styles.amountRow}>
                   <TextInput
                     style={styles.amountInput}
@@ -352,14 +352,14 @@ export default function BillsManage() {
                   <Text style={styles.currency}>đ</Text>
                 </View>
 
-                <Text style={styles.label}>Ngày đến hạn</Text>
+                <Text style={styles.label}>{t('bills.dueDateLabel')}</Text>
                 <DatePickerField
                   value={editing.due_date}
                   onChange={(d) => setEditing({ ...editing, due_date: d })}
-                  label="Hạn"
+                  label={t('bills.dueShort')}
                 />
 
-                <Text style={styles.label}>Lặp lại</Text>
+                <Text style={styles.label}>{t('bills.repeatLabel')}</Text>
                 <View style={styles.repeatRow}>
                   {REPEAT_OPTIONS.map((opt) => {
                     const selected = editing.repeat_period === opt.value;
@@ -378,14 +378,14 @@ export default function BillsManage() {
                             selected && { color: '#fff', fontWeight: '700' },
                           ]}
                         >
-                          {opt.label}
+                          {t(opt.labelKey)}
                         </Text>
                       </TouchableOpacity>
                     );
                   })}
                 </View>
 
-                <Text style={styles.label}>Danh mục (tuỳ chọn)</Text>
+                <Text style={styles.label}>{t('bills.categoryLabel')}</Text>
                 <View style={styles.catGrid}>
                   <TouchableOpacity
                     style={[
