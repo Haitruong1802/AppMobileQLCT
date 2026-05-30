@@ -1,6 +1,7 @@
 // F27 — Bar chart trend (so sánh thu/chi 6 tháng).
 import { View, Text, StyleSheet } from 'react-native';
 import Svg, { Rect, Line, Text as SvgText } from 'react-native-svg';
+import { t } from '../i18n';
 
 export type BarMonth = {
   label: string; // VD "T5"
@@ -115,11 +116,11 @@ export function BarChart({
       <View style={styles.legend}>
         <View style={styles.legendItem}>
           <View style={[styles.swatch, { backgroundColor: incomeColor }]} />
-          <Text style={styles.legendText}>Thu</Text>
+          <Text style={styles.legendText}>{t('common.income')}</Text>
         </View>
         <View style={styles.legendItem}>
           <View style={[styles.swatch, { backgroundColor: expenseColor }]} />
-          <Text style={styles.legendText}>Chi</Text>
+          <Text style={styles.legendText}>{t('common.expense')}</Text>
         </View>
       </View>
     </View>

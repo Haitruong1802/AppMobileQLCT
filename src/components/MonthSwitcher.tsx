@@ -5,6 +5,8 @@ import { Icon } from './Icon';
 import { useStore } from '../store/useStore';
 import { useTheme } from '../store/useTheme';
 import { formatMonth } from '../utils/date';
+import { useT } from '../i18n/useT';
+import { t } from '../i18n';
 
 function parseMonth(m: string): { year: number; month: number } {
   const [y, mo] = m.split('-');
@@ -29,6 +31,7 @@ function thisMonthStr(): string {
 }
 
 export function MonthSwitcher() {
+  useT();
   const palette = useTheme();
   const currentMonth = useStore((s) => s.currentMonth);
   const setCurrentMonth = useStore((s) => s.setCurrentMonth);
@@ -91,7 +94,7 @@ export function MonthSwitcher() {
           onPress={() => setPickerOpen(false)}
         >
           <View style={styles.modalCard}>
-            <Text style={styles.modalTitle}>Chọn tháng</Text>
+            <Text style={styles.modalTitle}>{t('common.pickMonth')}</Text>
             <ScrollView style={{ maxHeight: 360 }}>
               {months.map((m) => {
                 const selected = m === currentMonth;
@@ -118,7 +121,7 @@ export function MonthSwitcher() {
               })}
             </ScrollView>
             <TouchableOpacity style={styles.closeBtn} onPress={() => setPickerOpen(false)}>
-              <Text style={styles.closeText}>Đóng</Text>
+              <Text style={styles.closeText}>{t('common.close')}</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>

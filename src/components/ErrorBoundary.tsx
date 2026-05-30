@@ -2,6 +2,7 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from './Icon';
+import { t } from '../i18n';
 
 interface Props {
   children: ReactNode;
@@ -35,7 +36,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <Text style={styles.message}>{this.state.message}</Text>
           <Text style={styles.hint}>Đóng app rồi mở lại, hoặc bấm Reset bên dưới.</Text>
           <TouchableOpacity style={styles.btn} onPress={this.reset}>
-            <Text style={styles.btnText}>Thử lại</Text>
+            <Text style={styles.btnText}>{t('common.retry')}</Text>
           </TouchableOpacity>
         </View>
       );

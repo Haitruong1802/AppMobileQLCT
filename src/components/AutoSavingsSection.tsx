@@ -7,6 +7,7 @@ import { Icon } from './Icon';
 import { useStore } from '../store/useStore';
 import { useTheme } from '../store/useTheme';
 import { useT } from '../i18n/useT';
+import { t } from '../i18n';
 import { notify } from '../utils/notify';
 import { parseActiveSavingsFromSettings } from '../services/activeSavings';
 import { usePremiumTier } from '../store/usePremium';
@@ -109,11 +110,11 @@ export function AutoSavingsSection({ activeGoalsCount, onLockedTap }: Props) {
   return (
     <View style={styles.wrapper}>
       <View style={styles.headRow}>
-        <Text style={styles.headTitle}>Tự động tiết kiệm</Text>
+        <Text style={styles.headTitle}>{t('savings.headTitle')}</Text>
         {tier === 'pro' ? null : (
           <View style={styles.advancedPill}>
             <Icon name="Crown" size={10} color="#1f2937" strokeWidth={2.5} />
-            <Text style={styles.advancedText}>Nâng cao</Text>
+            <Text style={styles.advancedText}>{t('common.advanced')}</Text>
           </View>
         )}
       </View>

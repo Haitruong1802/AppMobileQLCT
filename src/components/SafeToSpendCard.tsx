@@ -176,13 +176,13 @@ export function SafeToSpendCard({
       {expanded ? (
         <View style={styles.detailBox}>
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Thu tháng</Text>
+            <Text style={styles.detailLabel}>{t('common.monthIncome')}</Text>
             <Text style={[styles.detailValue, { color: palette.income }]}>
               {formatNumber(data.monthIncome)}đ
             </Text>
           </View>
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Đã chi</Text>
+            <Text style={styles.detailLabel}>{t('common.spent')}</Text>
             <Text style={[styles.detailValue, { color: palette.expense }]}>
               −{formatNumber(data.monthExpense)}đ
             </Text>

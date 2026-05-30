@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import Svg, { Path, Circle, G } from 'react-native-svg';
+import { t } from '../i18n';
 
 export type PieSlice = {
   value: number;
@@ -29,7 +30,7 @@ export function PieChart({ slices, size = 200, thickness = 36, centerLabel, cent
     return (
       <View style={[styles.wrap, { width: size, height: size }]}>
         <View style={styles.empty}>
-          <Text style={styles.emptyText}>Chưa có dữ liệu</Text>
+          <Text style={styles.emptyText}>{t('common.noData')}</Text>
         </View>
       </View>
     );

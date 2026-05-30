@@ -4,6 +4,8 @@ import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/dat
 import { Icon } from './Icon';
 import { formatDate } from '../utils/date';
 import { useTheme } from '../store/useTheme';
+import { useT } from '../i18n/useT';
+import { t } from '../i18n';
 
 type Props = {
   value: string; // YYYY-MM-DD
@@ -83,7 +85,7 @@ export function DatePickerField({ value, onChange, label = 'Ngày', maxDate, tod
             }}
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
           >
-            <Text style={styles.todayBtnText}>Hôm nay</Text>
+            <Text style={styles.todayBtnText}>{t('common.today')}</Text>
           </TouchableOpacity>
         ) : null}
       </TouchableOpacity>
@@ -92,7 +94,7 @@ export function DatePickerField({ value, onChange, label = 'Ngày', maxDate, tod
         <Modal transparent visible={show} animationType="slide" onRequestClose={() => setShow(false)}>
           <Pressable style={styles.iosBg} onPress={() => setShow(false)}>
             <Pressable style={styles.iosCard} onPress={() => {}}>
-              <Text style={styles.iosTitle}>Chọn ngày</Text>
+              <Text style={styles.iosTitle}>{t('common.pickDate')}</Text>
               <View style={styles.iosPickerWrap}>
                 <DateTimePicker
                   value={date}
@@ -106,7 +108,7 @@ export function DatePickerField({ value, onChange, label = 'Ngày', maxDate, tod
                 />
               </View>
               <TouchableOpacity style={[styles.iosDone, { backgroundColor: palette.primary }]} onPress={() => setShow(false)}>
-                <Text style={styles.iosDoneText}>Xong</Text>
+                <Text style={styles.iosDoneText}>{t('common.done')}</Text>
               </TouchableOpacity>
             </Pressable>
           </Pressable>

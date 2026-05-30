@@ -13,6 +13,8 @@ import {
   Easing,
 } from 'react-native';
 import { useTheme } from '../store/useTheme';
+import { useT } from '../i18n/useT';
+import { t } from '../i18n';
 import { formatNumber } from '../utils/format';
 import { FONT_SIZE, FONT_WEIGHT, GRAY, RADIUS, SEMANTIC, SPACING } from '../theme/tokens';
 
@@ -52,6 +54,7 @@ type Props = {
 };
 
 export function CoolDownModal({ visible, amount, categoryName, note, onProceed, onCancel }: Props) {
+  useT();
   const palette = useTheme();
   const [secondsLeft, setSecondsLeft] = useState(COUNTDOWN_SECONDS);
   const progress = useRef(new Animated.Value(0)).current;
@@ -89,7 +92,7 @@ export function CoolDownModal({ visible, amount, categoryName, note, onProceed, 
       <View style={styles.backdrop}>
         <View style={styles.card}>
           <Text style={styles.emoji}>🍺</Text>
-          <Text style={styles.title}>Khoản này hơi lớn so với thường ngày</Text>
+          <Text style={styles.title}>{t('cooldown.title')}</Text>
 
           <View style={styles.amountBox}>
             <Text style={styles.amount}>{formatNumber(amount)}đ</Text>
@@ -121,7 +124,7 @@ export function CoolDownModal({ visible, amount, categoryName, note, onProceed, 
 
           <View style={styles.btnRow}>
             <TouchableOpacity style={styles.cancelBtn} onPress={onCancel}>
-              <Text style={styles.cancelText}>Huỷ ghi</Text>
+              <Text style={styles.cancelText}>{t('cooldown.cancelText')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[
