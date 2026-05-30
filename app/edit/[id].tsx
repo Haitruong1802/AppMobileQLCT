@@ -184,7 +184,7 @@ export default function EditTransaction() {
             }}
           >
             <Text style={[styles.typeText, type === 'expense' && styles.typeTextActive]}>
-              Chi
+              {t('input.tab.expense')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -195,7 +195,7 @@ export default function EditTransaction() {
             }}
           >
             <Text style={[styles.typeText, type === 'income' && styles.typeTextActive]}>
-              Thu
+              {t('input.tab.income')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -205,7 +205,7 @@ export default function EditTransaction() {
         {/* v3.64 — H6: Wallet picker (chỉ hiện khi > 1 ví) */}
         {wallets.length > 1 ? (
           <>
-            <Text style={styles.label}>Ví</Text>
+            <Text style={styles.label}>{t('input.wallet')}</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.walletRow}>
               {wallets.map((w) => {
                 const selected = walletId === w.id;
@@ -243,7 +243,7 @@ export default function EditTransaction() {
         <Text style={styles.label}>{t('edit.note')}</Text>
         <TextInput style={styles.input} value={note} onChangeText={setNote} />
 
-        <Text style={styles.label}>Ảnh đính kèm</Text>
+        <Text style={styles.label}>{t('edit.photoLabel')}</Text>
         {photoUri ? (
           <View style={styles.photoBox}>
             <Image

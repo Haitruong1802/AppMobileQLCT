@@ -24,7 +24,8 @@ function isoFromDate(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-export function DatePickerField({ value, onChange, label = 'Ngày', maxDate, todayISO }: Props) {
+export function DatePickerField({ value, onChange, label, maxDate, todayISO }: Props) {
+  const displayLabel = label ?? t('input.date');
   const isToday = todayISO ? value === todayISO : false;
   const showTodayBtn = !!todayISO && !isToday;
   const [show, setShow] = useState(false);
@@ -48,7 +49,7 @@ export function DatePickerField({ value, onChange, label = 'Ngày', maxDate, tod
     return (
       <View style={styles.row}>
         <Icon name="CalendarDays" size={16} color="#78350f" />
-        <Text style={styles.label}>{label}</Text>
+        <Text style={styles.label}>{displayLabel}</Text>
         {/* @ts-ignore */}
         <input
           type="date"
@@ -73,7 +74,7 @@ export function DatePickerField({ value, onChange, label = 'Ngày', maxDate, tod
     <>
       <TouchableOpacity style={styles.row} onPress={() => setShow(true)}>
         <Icon name="CalendarDays" size={16} color="#78350f" />
-        <Text style={styles.label}>{label}</Text>
+        <Text style={styles.label}>{displayLabel}</Text>
         <Text style={styles.value}>{formatDate(value, 'EEEE, dd/MM/yyyy')}</Text>
         {/* v3.93 — Nút Hôm nay (chỉ khi value khác today) */}
         {showTodayBtn ? (

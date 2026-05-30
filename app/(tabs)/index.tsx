@@ -249,7 +249,12 @@ export default function NhapVao() {
       setCategoryId(null);
       setSuggestion(null);
       setPhotoUri(null);
-      notify(`Đã ghi ${type === 'expense' ? 'chi' : 'thu'} ${formatNumber(n)}đ`);
+      notify(
+        t('input.recorded', {
+          type: type === 'expense' ? t('input.type.expense') : t('input.type.income'),
+          amount: formatNumber(n),
+        })
+      );
     } catch (e: any) {
       // v3.57 — Catch lỗi từ store guard (vd date tương lai)
       notify(e?.message || t('input.err.saveFailed'));
