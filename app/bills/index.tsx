@@ -423,13 +423,13 @@ export default function BillsManage() {
 
                 <View style={styles.modalBtns}>
                   <TouchableOpacity style={styles.cancelBtn} onPress={() => setEditing(null)}>
-                    <Text style={styles.cancelText}>Huỷ</Text>
+                    <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.saveBtn, { backgroundColor: palette.primary }]}
                     onPress={save}
                   >
-                    <Text style={styles.saveText}>Lưu</Text>
+                    <Text style={styles.saveText}>{t('common.save')}</Text>
                   </TouchableOpacity>
                 </View>
               </ScrollView>
@@ -480,7 +480,7 @@ export default function BillsManage() {
                   style={[styles.saveBtn, { backgroundColor: palette.primary }]}
                   onPress={doPay}
                 >
-                  <Text style={styles.saveText}>Xác nhận</Text>
+                  <Text style={styles.saveText}>{t('common.confirm')}</Text>
                 </TouchableOpacity>
               </View>
             </Pressable>
