@@ -91,7 +91,7 @@ export default function Onboarding() {
       <View style={styles.skipRow}>
         {step > 0 ? (
           <TouchableOpacity onPress={back} style={styles.skipBtn}>
-            <Text style={styles.skipText}>← Quay lại</Text>
+            <Text style={styles.skipText}>{t('onboarding.back')}</Text>
           </TouchableOpacity>
         ) : (
           <View style={{ height: 24 }} />

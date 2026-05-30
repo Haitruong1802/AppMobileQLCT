@@ -47,6 +47,7 @@ export const vi = {
   'budget.savingsHint': 'Để dành mỗi tháng, không tính vào chi tiêu',
   'budget.forecastEom': 'Dự kiến cuối tháng',
   'onboarding.skip': 'Bỏ qua',
+  'onboarding.back': '← Quay lại',
   'onboarding.continue': 'Tiếp tục',
   'onboarding.start': 'Bắt đầu',
   'onboarding.s1.title': 'Chào mừng đến với Bux2',

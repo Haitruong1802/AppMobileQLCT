@@ -47,6 +47,7 @@ export const en = {
   'budget.savingsHint': 'Saved each month, not counted as spending',
   'budget.forecastEom': 'Projected end of month',
   'onboarding.skip': 'Skip',
+  'onboarding.back': '← Back',
   'onboarding.continue': 'Continue',
   'onboarding.start': 'Get started',
   'onboarding.s1.title': 'Welcome to Bux2',

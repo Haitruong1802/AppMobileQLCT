@@ -47,6 +47,7 @@ export const zh = {
   'budget.savingsHint': '每月储蓄，不计入支出',
   'budget.forecastEom': '月末预计',
   'onboarding.skip': '跳过',
+  'onboarding.back': '← 返回',
   'onboarding.continue': '继续',
   'onboarding.start': '开始',
   'onboarding.s1.title': '欢迎使用 Bux2',
