@@ -397,7 +397,7 @@ export default function BillsManage() {
                     <View style={[styles.catIconBox, { backgroundColor: '#f3f4f6' }]}>
                       <Icon name="MoreHorizontal" size={18} color="#6b7280" />
                     </View>
-                    <Text style={styles.catName}>Tự động</Text>
+                    <Text style={styles.catName}>{t('bills.autoCat')}</Text>
                   </TouchableOpacity>
                   {expenseCats.slice(0, 8).map((c) => {
                     const selected = editing.category_id === c.id;
