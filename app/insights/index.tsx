@@ -127,7 +127,7 @@ export default function Insights() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <Icon name="ChevronLeft" size={24} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Phân tích chi tiêu</Text>
+        <Text style={styles.title}>{t('insights.title')}</Text>
         <TouchableOpacity onPress={() => loadReport()} style={styles.backBtn}>
           <Icon name="RotateCcw" size={20} color={palette.primary} />
         </TouchableOpacity>
@@ -138,7 +138,7 @@ export default function Insights() {
         <View style={[styles.headerCard, { backgroundColor: palette.primary }]}>
           <View style={styles.headerRow}>
             <Icon name="Sparkles" size={20} color="#fff" />
-            <Text style={styles.headerLabel}>Báo cáo thông minh</Text>
+            <Text style={styles.headerLabel}>{t('insights.headerLabel')}</Text>
           </View>
           <Text style={styles.headerTitle}>{formatMonth(currentMonth)}</Text>
           <Text style={styles.headerSub}>
@@ -178,7 +178,7 @@ export default function Insights() {
               style={[styles.btn, { backgroundColor: palette.primary }]}
               onPress={() => loadReport()}
             >
-              <Text style={styles.btnText}>Thử lại</Text>
+              <Text style={styles.btnText}>{t('insights.retry')}</Text>
             </TouchableOpacity>
           </View>
         ) : report ? (
@@ -189,7 +189,7 @@ export default function Insights() {
                 <View style={[styles.sectionIcon, { backgroundColor: palette.primaryLight }]}>
                   <Icon name="BarChart3" size={16} color={palette.primary} />
                 </View>
-                <Text style={styles.sectionTitle}>Tổng quan</Text>
+                <Text style={styles.sectionTitle}>{t('insights.overview')}</Text>
               </View>
               <Text style={styles.bodyText}>{report.summary}</Text>
             </View>
@@ -201,7 +201,7 @@ export default function Insights() {
                   <View style={[styles.sectionIcon, { backgroundColor: '#fef3c7' }]}>
                     <Icon name="AlertCircle" size={16} color="#d97706" />
                   </View>
-                  <Text style={styles.sectionTitle}>Điểm bất thường</Text>
+                  <Text style={styles.sectionTitle}>{t('insights.anomalies')}</Text>
                 </View>
                 {report.anomalies.map((a, i) => (
                   <View key={i} style={styles.bulletRow}>
@@ -219,7 +219,7 @@ export default function Insights() {
                   <View style={[styles.sectionIcon, { backgroundColor: palette.primaryLight }]}>
                     <Icon name="TrendingDown" size={16} color={palette.primary} />
                   </View>
-                  <Text style={styles.sectionTitle}>Gợi ý hành động</Text>
+                  <Text style={styles.sectionTitle}>{t('insights.suggestions')}</Text>
                 </View>
                 {report.suggestions.map((s, i) => (
                   <View key={i} style={styles.bulletRow}>
@@ -235,7 +235,7 @@ export default function Insights() {
               <View style={[styles.savingsCard, { backgroundColor: palette.primaryLight, borderColor: palette.primary }]}>
                 <View style={styles.sectionHead}>
                   <Icon name="Crown" size={20} color={palette.primary} />
-                  <Text style={[styles.savingsTitle, { color: palette.primary }]}>Mục tiêu tiết kiệm</Text>
+                  <Text style={[styles.savingsTitle, { color: palette.primary }]}>{t('insights.savingsTarget')}</Text>
                 </View>
                 <Text style={[styles.bodyText, { color: palette.primaryDark, fontWeight: '600' }]}>
                   {report.savings_target}

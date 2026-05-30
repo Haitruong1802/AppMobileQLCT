@@ -8,6 +8,8 @@ import { useRouter } from 'expo-router';
 import { useStore } from '../../src/store/useStore';
 import { Icon } from '../../src/components/Icon';
 import { useTheme } from '../../src/store/useTheme';
+import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 
 type Step = {
   iconName: string;
@@ -19,6 +21,7 @@ type Step = {
 };
 
 export default function Onboarding() {
+  useT();
   const router = useRouter();
   const updateSetting = useStore((s) => s.updateSetting);
   const palette = useTheme();
@@ -30,37 +33,33 @@ export default function Onboarding() {
       iconName: 'Wallet',
       iconBgColor: palette.primaryLight,
       iconFgColor: palette.primary,
-      title: 'Chào mừng đến với Bux2',
-      desc:
-        'Ứng dụng quản lý thu chi cá nhân thiết kế cho người Việt. Đơn giản, nhanh, riêng tư, dữ liệu lưu trong máy của bạn.',
-      cta: 'Tiếp tục',
+      title: t('onboarding.s1.title'),
+      desc: t('onboarding.s1.desc'),
+      cta: t('onboarding.continue'),
     },
     {
       iconName: 'Sparkles',
       iconBgColor: palette.primaryLight,
       iconFgColor: palette.primary,
-      title: 'Ghi chi tiêu chỉ một chạm',
-      desc:
-        'Gõ ngắn gọn "Ăn trưa 60k" hoặc "Lương 12tr", app tự nhận diện số tiền và danh mục.\n\nĐính kèm ảnh hoá đơn cho từng giao dịch để dễ tra cứu.',
-      cta: 'Tiếp tục',
+      title: t('onboarding.s2.title'),
+      desc: t('onboarding.s2.desc'),
+      cta: t('onboarding.continue'),
     },
     {
       iconName: 'BarChart3',
       iconBgColor: palette.primaryLight,
       iconFgColor: palette.primary,
-      title: 'Hiểu rõ chi tiêu của bạn',
-      desc:
-        'Biểu đồ trực quan theo danh mục, đặt ngân sách hàng tháng, nhận tóm tắt và cảnh báo khi chi vượt mức.\n\nXuất CSV bất kỳ lúc nào để sao lưu hoặc làm báo cáo.',
-      cta: 'Tiếp tục',
+      title: t('onboarding.s3.title'),
+      desc: t('onboarding.s3.desc'),
+      cta: t('onboarding.continue'),
     },
     {
       iconName: 'Lock',
       iconBgColor: palette.primaryLight,
       iconFgColor: palette.primary,
-      title: 'Dữ liệu của bạn, riêng tư',
-      desc:
-        'Mọi giao dịch lưu cục bộ trên máy bạn. App hoạt động hoàn toàn offline, không gửi dữ liệu lên server.\n\nKhoá app bằng PIN cùng Face ID hoặc vân tay.',
-      cta: 'Bắt đầu',
+      title: t('onboarding.s4.title'),
+      desc: t('onboarding.s4.desc'),
+      cta: t('onboarding.start'),
     },
   ];
 
@@ -99,7 +98,7 @@ export default function Onboarding() {
         )}
         {step < steps.length - 1 ? (
           <TouchableOpacity onPress={finish} style={styles.skipBtn}>
-            <Text style={styles.skipText}>Bỏ qua</Text>
+            <Text style={styles.skipText}>{t('onboarding.skip')}</Text>
           </TouchableOpacity>
         ) : (
           <View style={{ height: 24 }} />
