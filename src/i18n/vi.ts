@@ -45,6 +45,7 @@ export const vi = {
   'report.recordTx': 'Ghi giao dịch',
   'budget.savingsThisMonth': 'Tiết kiệm tháng này',
   'budget.savingsHint': 'Để dành mỗi tháng, không tính vào chi tiêu',
+  'budget.forecastEom': 'Dự kiến cuối tháng',
   'onboarding.skip': 'Bỏ qua',
   'onboarding.continue': 'Tiếp tục',
   'onboarding.start': 'Bắt đầu',

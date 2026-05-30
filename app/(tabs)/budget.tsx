@@ -295,7 +295,7 @@ export default function Budget() {
                           { color: projectedOver ? palette.expense : '#6b7280' },
                         ]}
                       >
-                        Dự kiến cuối tháng: {formatNumber(projected)}đ
+                        {t('budget.forecastEom')}: {formatNumber(projected)}đ
                         {projectedOver ? ' · sẽ vượt' : ''}
                       </Text>
                     );

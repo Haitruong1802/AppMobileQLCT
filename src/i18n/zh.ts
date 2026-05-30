@@ -45,6 +45,7 @@ export const zh = {
   'report.recordTx': '记录交易',
   'budget.savingsThisMonth': '本月储蓄',
   'budget.savingsHint': '每月储蓄，不计入支出',
+  'budget.forecastEom': '月末预计',
   'onboarding.skip': '跳过',
   'onboarding.continue': '继续',
   'onboarding.start': '开始',

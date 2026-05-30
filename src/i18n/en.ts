@@ -45,6 +45,7 @@ export const en = {
   'report.recordTx': 'Record transaction',
   'budget.savingsThisMonth': 'Savings this month',
   'budget.savingsHint': 'Saved each month, not counted as spending',
+  'budget.forecastEom': 'Projected end of month',
   'onboarding.skip': 'Skip',
   'onboarding.continue': 'Continue',
   'onboarding.start': 'Get started',
