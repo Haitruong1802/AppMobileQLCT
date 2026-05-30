@@ -163,7 +163,7 @@ export default function Budget() {
   async function saveBudget() {
     if (!editing) return;
     const n = parseInt(editing.amount.replace(/\D/g, ''), 10);
-    if (!n || n <= 0) return notify('Nhập số tiền hợp lệ');
+    if (!n || n <= 0) return notify(t('err.amountInvalid'));
     await setBudget(editing.catId, n, month);
     setEditing(null);
   }

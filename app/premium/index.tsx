@@ -62,7 +62,7 @@ export default function Premium() {
     try {
       const result = await restorePremium();
       if (result.ok) {
-        notify('Đã khôi phục gói Pro.', 'success');
+        notify(t('msg.proRestored'), 'success');
       } else {
         const title = result.reason === 'iap-not-configured' ? 'Thông báo' : 'Không thể khôi phục';
         if (Platform.OS === 'web') {
@@ -97,7 +97,7 @@ export default function Premium() {
             });
       if (!proceed) return;
       await activatePremium(picked);
-      notify('Tài khoản của bạn đã được kích hoạt gói Pro', 'success');
+      notify(t('msg.proActivated'), 'success');
       // Không router.back() — để UI tự re-render qua usePremiumState subscription,
       // user sẽ thấy Pro active state ngay trên cùng màn này.
     } catch (e: any) {
@@ -119,7 +119,7 @@ export default function Premium() {
           });
     if (!proceed) return;
     await deactivatePremium();
-    notify('Đã reset về Free (DEV)');
+    notify(t('msg.proReset'));
   }
 
   // ───────── EARLY ACCESS STATE (v1.0 free-only) ─────────

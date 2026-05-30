@@ -45,7 +45,7 @@ export default function ThemeScreen() {
       await updateSetting('theme', p.key);
       notify(`Đã đổi sang theme ${p.label}.`, 'success');
     } catch {
-      notify('Không đổi được theme.', 'error');
+      notify(t('err.themeChangeFailed'), 'error');
     }
   }
 

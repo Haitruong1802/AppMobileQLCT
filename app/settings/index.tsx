@@ -114,13 +114,13 @@ export default function Settings() {
           copyToCacheDirectory: true,
         });
       } catch {
-        notify('Không mở được trình chọn file. Vui lòng thử lại.', 'error');
+        notify(t('err.filePickerFailed'), 'error');
         return;
       }
       if (pickResult.canceled) return;
       const uri = pickResult.assets?.[0]?.uri;
       if (!uri) {
-        notify('Không đọc được file đã chọn.', 'error');
+        notify(t('err.fileReadFailed'), 'error');
         return;
       }
 
@@ -132,7 +132,7 @@ export default function Settings() {
         if (e instanceof BackupValidationError) {
           notify(e.message, 'error');
         } else {
-          notify('File khôi phục không hợp lệ, vui lòng chọn đúng file sao lưu của Bux2.', 'error');
+          notify(t('err.invalidBackup'), 'error');
         }
         return;
       }
@@ -178,7 +178,7 @@ export default function Settings() {
         ]);
         notify(`Đã khôi phục ${total} bản ghi`, 'success');
       } catch {
-        notify('Khôi phục thất bại. Dữ liệu hiện tại của bạn được giữ nguyên.', 'error');
+        notify(t('err.restoreFailed'), 'error');
       }
     } finally {
       setRestoring(false);
@@ -189,7 +189,7 @@ export default function Settings() {
     setOptimizing(true);
     try {
       await optimizeDb();
-      notify('Đã tối ưu cơ sở dữ liệu');
+      notify(t('msg.dbOptimized'));
     } catch (e: any) {
       notify(`Lỗi: ${e?.message || 'unknown'}`);
     } finally {

@@ -342,7 +342,7 @@ export default function NhapVao() {
 
   async function tryVoiceParse() {
     if (autoFilling) return;
-    if (!voiceText.trim()) return notify('Nhập câu, ví dụ: "Ăn trưa 60k"');
+    if (!voiceText.trim()) return notify(t('err.voiceTextRequired'));
 
     setAutoFilling(true);
     Keyboard.dismiss();

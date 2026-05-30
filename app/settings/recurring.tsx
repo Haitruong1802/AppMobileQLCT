@@ -107,8 +107,8 @@ export default function RecurringManage() {
   async function save() {
     if (!editing) return;
     const amt = parseInt(editing.amount.replace(/\D/g, ''), 10);
-    if (!amt || amt <= 0) return notify('Nhập số tiền');
-    if (!editing.category_id) return notify('Chọn danh mục');
+    if (!amt || amt <= 0) return notify(t('input.err.noAmount'));
+    if (!editing.category_id) return notify(t('input.err.noCategory'));
     setSaving(true);
     try {
       if (editing.id) {

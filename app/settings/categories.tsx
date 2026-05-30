@@ -79,11 +79,11 @@ export default function CategoriesManage() {
     if (!editing) return;
     const name = editing.name.trim();
     if (!name) {
-      notify('Nhập tên danh mục');
+      notify(t('err.catNameRequired'));
       return;
     }
     if (name.length > 30) {
-      notify('Tên tối đa 30 ký tự');
+      notify(t('err.catNameTooLong'));
       return;
     }
     setSaving(true);
@@ -143,7 +143,7 @@ export default function CategoriesManage() {
           : 'Đã xoá'
       );
     } else {
-      notify('Đã ẩn danh mục mặc định');
+      notify(t('msg.catHidden'));
     }
   }
 
