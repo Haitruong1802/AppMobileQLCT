@@ -183,7 +183,7 @@ export default function Goals() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <Icon name="ChevronLeft" size={24} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Mục tiêu tiết kiệm</Text>
+        <Text style={styles.title}>{t('goals.title')}</Text>
         <TouchableOpacity onPress={openCreate} style={styles.addTopBtn}>
           <Icon name="Sparkles" size={20} color={palette.primary} />
         </TouchableOpacity>
@@ -256,7 +256,7 @@ export default function Goals() {
                       onPress={() => setAddingTo({ goal: g, amount: '' })}
                     >
                       <Icon name="TrendingUp" size={16} color="#fff" />
-                      <Text style={styles.actionText}>Cộng tiền</Text>
+                      <Text style={styles.actionText}>{t('goals.addMoney')}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.editBtn} onPress={() => openEdit(g)}>
                       <Icon name="Pencil" size={16} color="#6b7280" />
@@ -289,20 +289,20 @@ export default function Goals() {
             <View style={styles.modalCard}>
               <ScrollView keyboardShouldPersistTaps="handled">
                 <Text style={styles.modalTitle}>
-                  {editing.id ? 'Sửa mục tiêu' : 'Tạo mục tiêu'}
+                  {editing.id ? t('goals.editTitle') : t('goals.createTitle')}
                 </Text>
 
-                <Text style={styles.label}>Tên mục tiêu</Text>
+                <Text style={styles.label}>{t('goals.nameLabel')}</Text>
                 <TextInput
                   style={styles.input}
                   value={editing.name}
                   onChangeText={(v) => setEditing({ ...editing, name: v })}
-                  placeholder="VD: iPhone 16, Du lịch Đà Lạt..."
+                  placeholder={t('goals.namePlaceholder')}
                   placeholderTextColor="#9ca3af"
                   maxLength={50}
                 />
 
-                <Text style={styles.label}>Số tiền đích</Text>
+                <Text style={styles.label}>{t('goals.targetLabel')}</Text>
                 <View style={styles.amountRow}>
                   <TextInput
                     style={styles.amountInput}
@@ -319,14 +319,14 @@ export default function Goals() {
                   <Text style={styles.currency}>đ</Text>
                 </View>
 
-                <Text style={styles.label}>Hạn (tuỳ chọn)</Text>
+                <Text style={styles.label}>{t('goals.deadlineLabel')}</Text>
                 <DatePickerField
                   value={editing.deadline || todayISO()}
                   onChange={(d) => setEditing({ ...editing, deadline: d })}
-                  label="Hạn"
+                  label={t('goals.deadlineShort')}
                 />
 
-                <Text style={styles.label}>Biểu tượng</Text>
+                <Text style={styles.label}>{t('goals.iconLabel')}</Text>
                 <View style={styles.iconRow}>
                   {ICON_CHOICES.map((n) => {
                     const selected = editing.icon === n;
@@ -345,7 +345,7 @@ export default function Goals() {
                   })}
                 </View>
 
-                <Text style={styles.label}>Màu</Text>
+                <Text style={styles.label}>{t('goals.colorLabel')}</Text>
                 <View style={styles.colorRow}>
                   {COLOR_CHOICES.map((col) => {
                     const selected = editing.color === col;
