@@ -328,11 +328,11 @@ export default function Report() {
             <View style={styles.weekCompareBox}>
               <View style={styles.weekHead}>
                 <Icon name="BarChart3" size={14} color="#6b7280" />
-                <Text style={styles.weekTitle}>So sánh tuần</Text>
+                <Text style={styles.weekTitle}>{t('report.weekCompare')}</Text>
               </View>
               <View style={styles.weekRow}>
                 <View style={styles.weekCell}>
-                  <Text style={styles.weekLabel}>Tuần này</Text>
+                  <Text style={styles.weekLabel}>{t('report.thisWeek')}</Text>
                   <Text style={[styles.weekValue, { color: palette.expense }]}>
                     {formatNumber(weekCompare.thisExp)}đ
                   </Text>
@@ -346,7 +346,7 @@ export default function Report() {
                   ) : null}
                 </View>
                 <View style={[styles.weekCell, { alignItems: 'flex-end' }]}>
-                  <Text style={styles.weekLabel}>Tuần trước</Text>
+                  <Text style={styles.weekLabel}>{t('report.lastWeek')}</Text>
                   <Text style={[styles.weekValue, { color: '#6b7280' }]}>
                     {formatNumber(weekCompare.lastExp)}đ
                   </Text>
@@ -361,7 +361,7 @@ export default function Report() {
           <View style={styles.biggestBox}>
             <View style={styles.biggestHead}>
               <Icon name="Crown" size={16} color="#f59e0b" />
-              <Text style={styles.biggestTitle}>Giao dịch lớn nhất tháng</Text>
+              <Text style={styles.biggestTitle}>{t('report.biggestTx')}</Text>
             </View>
             <View style={styles.biggestRow}>
               <View
@@ -411,7 +411,7 @@ export default function Report() {
               onPress={() => router.push('/(tabs)/')}
             >
               <Icon name="Pencil" size={16} color="#fff" />
-              <Text style={styles.emptyBtnText}>Ghi giao dịch</Text>
+              <Text style={styles.emptyBtnText}>{t('report.recordTx')}</Text>
             </TouchableOpacity>
           </View>
         )}

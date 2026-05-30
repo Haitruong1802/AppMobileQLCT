@@ -206,9 +206,9 @@ export default function NhapVao() {
   async function submit() {
     if (submittingRef.current || submitting) return; // v3.146 — ref guard race-safe
     const n = parseInt(amount.replace(/\D/g, ''), 10);
-    if (!n || n <= 0) return notify('Nhập số tiền');
-    if (!categoryId) return notify('Chọn danh mục');
-    if (!walletId) return notify('Chọn ví');
+    if (!n || n <= 0) return notify(t('input.err.noAmount'));
+    if (!categoryId) return notify(t('input.err.noCategory'));
+    if (!walletId) return notify(t('input.err.noWallet'));
     Keyboard.dismiss();
 
     // v3.37 — Cool-down check: chi > ngưỡng cho category "tiêu vào quá tay"
@@ -252,7 +252,7 @@ export default function NhapVao() {
       notify(`Đã ghi ${type === 'expense' ? 'chi' : 'thu'} ${formatNumber(n)}đ`);
     } catch (e: any) {
       // v3.57 — Catch lỗi từ store guard (vd date tương lai)
-      notify(e?.message || 'Lỗi khi ghi giao dịch');
+      notify(e?.message || t('input.err.saveFailed'));
     } finally {
       // v3.146 — Luôn reset cả ref + state để guard mở lại cho lần submit tiếp
       submittingRef.current = false;
@@ -273,7 +273,7 @@ export default function NhapVao() {
       if (perm.status !== 'granted') {
         perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (perm.status !== 'granted') {
-          return notify('Cần quyền truy cập thư viện ảnh');
+          return notify(t('input.err.libPermission'));
         }
       }
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -303,7 +303,7 @@ export default function NhapVao() {
       if (perm.status !== 'granted') {
         perm = await ImagePicker.requestCameraPermissionsAsync();
         if (perm.status !== 'granted') {
-          return notify('Cần quyền camera');
+          return notify(t('input.err.camPermission'));
         }
       }
       const result = await ImagePicker.launchCameraAsync({
@@ -386,7 +386,7 @@ export default function NhapVao() {
       }
 
       if (!localAmount) {
-        notify('Không hiểu số tiền. Thử "Ăn trưa 60k" hoặc "Lương 12tr".');
+        notify(t('input.err.parseFailed'));
         return;
       }
 

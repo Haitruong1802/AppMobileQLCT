@@ -232,8 +232,8 @@ export default function Budget() {
           <View style={[styles.savingsRow, { backgroundColor: palette.primaryLight, borderColor: palette.primary + '40' }]}>
             <Icon name="Crown" size={18} color={palette.primary} />
             <View style={{ flex: 1 }}>
-              <Text style={[styles.savingsLabel, { color: palette.primary }]}>Tiết kiệm tháng này</Text>
-              <Text style={styles.savingsHint}>Để dành mỗi tháng, không tính vào chi tiêu</Text>
+              <Text style={[styles.savingsLabel, { color: palette.primary }]}>{t('budget.savingsThisMonth')}</Text>
+              <Text style={styles.savingsHint}>{t('budget.savingsHint')}</Text>
             </View>
             <Text style={[styles.savingsValue, { color: palette.primary }]}>{formatNumber(savingsTarget)}đ</Text>
           </View>
