@@ -222,7 +222,7 @@ export default function StreakScreen() {
         </View>
 
         {/* WEEK STRIP */}
-        <Text style={styles.sectionLabel}>Tuần này</Text>
+        <Text style={styles.sectionLabel}>{t('streak.thisWeek')}</Text>
         <View style={styles.weekStrip}>
           {weekArr.map((d, i) => {
             const active = activeInWeek.has(d);
@@ -296,7 +296,7 @@ export default function StreakScreen() {
           }}
         >
           <Pressable style={styles.renameCard} onPress={() => {}}>
-            <Text style={styles.renameTitle}>Đặt tên cho thú cưng</Text>
+            <Text style={styles.renameTitle}>{t('streak.petRenameTitle')}</Text>
             <Text style={styles.renameDesc}>Tên gọi yêu thương, 16 ký tự</Text>
             <TextInput
               style={styles.renameInput}

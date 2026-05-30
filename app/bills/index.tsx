@@ -300,11 +300,11 @@ export default function BillsManage() {
                       onPress={() => startPay(b)}
                     >
                       <Icon name="Check" size={14} color="#fff" />
-                      <Text style={styles.payBtnText}>Thanh toán</Text>
+                      <Text style={styles.payBtnText}>{t('bills.pay')}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.editBtnSmall} onPress={() => openEdit(b)}>
                       <Icon name="Pencil" size={14} color="#6b7280" />
-                      <Text style={styles.editBtnText}>Sửa</Text>
+                      <Text style={styles.editBtnText}>{t('bills.editAction')}</Text>
                     </TouchableOpacity>
                   </View>
                 ) : null}
@@ -450,7 +450,7 @@ export default function BillsManage() {
                 Sẽ tạo giao dịch chi {formatNumber(paying.bill.amount)}đ vào ví bên dưới.
               </Text>
 
-              <Text style={styles.label}>Trừ vào ví</Text>
+              <Text style={styles.label}>{t('bills.deductWallet')}</Text>
               <View style={styles.walletGrid}>
                 {wallets.map((w) => {
                   const selected = paying.walletId === w.id;

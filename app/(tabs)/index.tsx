@@ -452,7 +452,7 @@ export default function NhapVao() {
           safeToSpend.todayExpense > safeToSpend.safeAmount ? (
             <View style={[styles.tomorrowBar, { backgroundColor: palette.primaryLight, borderColor: palette.primary + '40' }]}>
               <Icon name="CalendarDays" size={14} color={palette.primary} />
-              <Text style={[styles.tomorrowBarLabel, { color: palette.primary }]}>Mai bắt đầu lại với</Text>
+              <Text style={[styles.tomorrowBarLabel, { color: palette.primary }]}>{t('input.tomorrowReset')}</Text>
               <Text style={[styles.tomorrowBarAmount, { color: palette.primaryDark }]}>
                 {formatNumber(safeToSpend.tomorrowAmount)}đ
               </Text>

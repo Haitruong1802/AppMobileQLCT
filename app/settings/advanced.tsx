@@ -14,10 +14,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Icon } from '../../src/components/Icon';
 import { useTheme } from '../../src/store/useTheme';
+import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { getDb } from '../../src/db';
 
 export default function Advanced() {
   const router = useRouter();
+  useT();
   const palette = useTheme();
 
   // DEV: Set streak giả để test pet stages.
@@ -49,7 +52,7 @@ export default function Advanced() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <Icon name="ChevronLeft" size={24} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Cài đặt nâng cao</Text>
+        <Text style={styles.title}>{t('settings.advanced')}</Text>
         <View style={{ width: 24 }} />
       </View>
 

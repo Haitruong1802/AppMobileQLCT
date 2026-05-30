@@ -306,7 +306,7 @@ export default function Premium() {
               </View>
               {b.comingSoon ? (
                 <View style={styles.comingSoonBadge}>
-                  <Text style={styles.comingSoonText}>Sắp ra mắt</Text>
+                  <Text style={styles.comingSoonText}>{t('premium.comingSoon')}</Text>
                 </View>
               ) : (
                 <Icon name="Check" size={18} color={palette.primary} />

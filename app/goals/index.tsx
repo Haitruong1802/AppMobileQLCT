@@ -193,7 +193,7 @@ export default function Goals() {
         {goals.length === 0 ? (
           <View style={styles.empty}>
             <Icon name="Crown" size={56} color="#d1d5db" />
-            <Text style={styles.emptyTitle}>Chưa có mục tiêu nào</Text>
+            <Text style={styles.emptyTitle}>{t('goals.emptyTitle')}</Text>
             <Text style={styles.emptyDesc}>
               Đặt mục tiêu tiết kiệm: iPhone, du lịch, đám cưới... Bux2 giúp bạn theo dõi.
             </Text>
@@ -202,7 +202,7 @@ export default function Goals() {
               onPress={openCreate}
             >
               <Icon name="Sparkles" size={18} color="#fff" />
-              <Text style={styles.addBtnText}>Tạo mục tiêu đầu tiên</Text>
+              <Text style={styles.addBtnText}>{t('goals.createFirst')}</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -267,7 +267,7 @@ export default function Goals() {
                   </View>
                 ) : (
                   <TouchableOpacity style={styles.delDoneBtn} onPress={() => doDelete(g)}>
-                    <Text style={styles.delDoneText}>Xoá khỏi danh sách</Text>
+                    <Text style={styles.delDoneText}>{t('goals.removeFromList')}</Text>
                   </TouchableOpacity>
                 )}
               </View>
@@ -386,7 +386,7 @@ export default function Goals() {
           <Pressable style={styles.modalBgCenter} onPress={() => setAddingTo(null)}>
             <Pressable style={styles.modalCardSmall} onPress={() => {}}>
               <Text style={styles.modalTitle}>Cộng vào "{addingTo.goal.name}"</Text>
-              <Text style={styles.label}>Số tiền</Text>
+              <Text style={styles.label}>{t('goals.amountLabel')}</Text>
               <View style={styles.amountRow}>
                 <TextInput
                   style={styles.amountInput}
@@ -411,7 +411,7 @@ export default function Goals() {
                   style={[styles.saveBtn, { backgroundColor: addingTo.goal.color }]}
                   onPress={doAdd}
                 >
-                  <Text style={styles.saveText}>Cộng</Text>
+                  <Text style={styles.saveText}>{t('goals.addAction')}</Text>
                 </TouchableOpacity>
               </View>
             </Pressable>

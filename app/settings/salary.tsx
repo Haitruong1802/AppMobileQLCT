@@ -189,7 +189,7 @@ export default function SalarySettings() {
               {/* v3.65 — M5: Custom days input (cycle khác 7/15/30) */}
               {cycleType === 'days' ? (
                 <View style={{ marginTop: 10 }}>
-                  <Text style={styles.label}>Số ngày tuỳ chọn</Text>
+                  <Text style={styles.label}>{t('salary.customDays')}</Text>
                   <TextInput
                     style={styles.input}
                     value={String(cycleDays)}
