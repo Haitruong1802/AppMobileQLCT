@@ -346,7 +346,7 @@ export default function RecurringManage() {
 
                 <View style={styles.modalBtns}>
                   <TouchableOpacity style={styles.cancelBtn} onPress={() => setEditing(null)}>
-                    <Text style={styles.cancelText}>Huỷ</Text>
+                    <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.saveBtn, { backgroundColor: palette.primary }, saving && { opacity: 0.6 }]}

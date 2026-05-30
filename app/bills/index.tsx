@@ -474,7 +474,7 @@ export default function BillsManage() {
 
               <View style={styles.modalBtns}>
                 <TouchableOpacity style={styles.cancelBtn} onPress={() => setPaying(null)}>
-                  <Text style={styles.cancelText}>Huỷ</Text>
+                  <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.saveBtn, { backgroundColor: palette.primary }]}

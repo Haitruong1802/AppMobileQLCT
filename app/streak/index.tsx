@@ -34,6 +34,8 @@ import {
   computeMaturityPoints,
 } from '../../src/services/petStages';
 import { useStore } from '../../src/store/useStore';
+import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 
 const WEEK_LABELS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
 
@@ -54,6 +56,7 @@ function todayStr(): string {
 }
 
 export default function StreakScreen() {
+  useT();
   const router = useRouter();
   const transactions = useStore((s) => s.transactions);
   const settings = useStore((s) => s.settings);
@@ -312,7 +315,7 @@ export default function StreakScreen() {
                   setPetNameDraft('');
                 }}
               >
-                <Text style={{ color: '#6b7280', fontWeight: '700' }}>Huỷ</Text>
+                <Text style={{ color: '#6b7280', fontWeight: '700' }}>{t('common.cancel')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.renameBtn, { backgroundColor: petStage.color }]}
@@ -325,7 +328,7 @@ export default function StreakScreen() {
                   setPetNameDraft('');
                 }}
               >
-                <Text style={{ color: '#fff', fontWeight: '700' }}>Lưu</Text>
+                <Text style={{ color: '#fff', fontWeight: '700' }}>{t('common.save')}</Text>
               </TouchableOpacity>
             </View>
           </Pressable>

@@ -17,6 +17,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Icon } from '../../src/components/Icon';
 import { useTheme } from '../../src/store/useTheme';
+import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { formatNumber } from '../../src/utils/format';
 import { formatDate, todayISO } from '../../src/utils/date';
 import {
@@ -49,6 +51,7 @@ interface Draft {
 
 export default function Goals() {
   const router = useRouter();
+  useT();
   const palette = useTheme();
   const currentBookId = useStore((s) => s.currentBookId);
   const saveGuard = useSubmitGuard();
@@ -360,13 +363,13 @@ export default function Goals() {
 
                 <View style={styles.modalBtns}>
                   <TouchableOpacity style={styles.cancelBtn} onPress={() => setEditing(null)}>
-                    <Text style={styles.cancelText}>Huỷ</Text>
+                    <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.saveBtn, { backgroundColor: palette.primary }]}
                     onPress={save}
                   >
-                    <Text style={styles.saveText}>Lưu</Text>
+                    <Text style={styles.saveText}>{t('common.save')}</Text>
                   </TouchableOpacity>
                 </View>
               </ScrollView>
@@ -402,7 +405,7 @@ export default function Goals() {
               </View>
               <View style={styles.modalBtns}>
                 <TouchableOpacity style={styles.cancelBtn} onPress={() => setAddingTo(null)}>
-                  <Text style={styles.cancelText}>Huỷ</Text>
+                  <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.saveBtn, { backgroundColor: addingTo.goal.color }]}

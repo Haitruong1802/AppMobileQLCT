@@ -22,6 +22,7 @@ import { DatePickerField } from '../../src/components/DatePickerField';
 import { todayISO } from '../../src/utils/date';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { displayCategoryName } from '../../src/i18n/categoryName';
 
 export default function EditTransaction() {
@@ -167,7 +168,7 @@ export default function EditTransaction() {
         </TouchableOpacity>
         <Text style={styles.title}>Sửa giao dịch</Text>
         <TouchableOpacity onPress={confirmDelete}>
-          <Text style={styles.deleteText}>Xoá</Text>
+          <Text style={styles.deleteText}>{t('common.delete')}</Text>
         </TouchableOpacity>
       </View>
 

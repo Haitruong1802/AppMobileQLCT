@@ -19,6 +19,7 @@ import { Icon, ICONS } from '../../src/components/Icon';
 import { getAllCategories, Category } from '../../src/db';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { displayCategoryName } from '../../src/i18n/categoryName';
 
 const ICON_CHOICES = [
@@ -294,7 +295,7 @@ export default function CategoriesManage() {
 
               <View style={styles.modalBtns}>
                 <TouchableOpacity style={styles.cancelBtn} onPress={() => setEditing(null)}>
-                  <Text style={styles.cancelText}>Huỷ</Text>
+                  <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.saveBtn, { backgroundColor: palette.primary }, saving && { opacity: 0.6 }]}
