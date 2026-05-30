@@ -181,7 +181,7 @@ export default function RecurringManage() {
         {rules.length === 0 ? (
           <View style={styles.empty}>
             <Icon name="CalendarDays" size={56} color="#d1d5db" />
-            <Text style={styles.emptyTitle}>Chưa có giao dịch lặp</Text>
+            <Text style={styles.emptyTitle}>{t('recurring.emptyTitle')}</Text>
             <Text style={styles.emptyDesc}>
               Tạo quy tắc tự động ghi: lương hàng tháng, tiền nhà, gói data...
             </Text>
@@ -190,7 +190,7 @@ export default function RecurringManage() {
               onPress={openCreate}
             >
               <Icon name="Sparkles" size={18} color="#fff" />
-              <Text style={styles.addBtnText}>Tạo quy tắc đầu tiên</Text>
+              <Text style={styles.addBtnText}>{t('recurring.createFirst')}</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -260,7 +260,7 @@ export default function RecurringManage() {
                   </TouchableOpacity>
                 </View>
 
-                <Text style={styles.label}>Số tiền</Text>
+                <Text style={styles.label}>{t('recurring.amount')}</Text>
                 <View style={styles.amountRow}>
                   <TextInput
                     style={styles.amountInput}
@@ -277,7 +277,7 @@ export default function RecurringManage() {
                   <Text style={styles.currency}>đ</Text>
                 </View>
 
-                <Text style={styles.label}>Ghi chú</Text>
+                <Text style={styles.label}>{t('recurring.note')}</Text>
                 <TextInput
                   style={styles.input}
                   value={editing.note}
@@ -287,7 +287,7 @@ export default function RecurringManage() {
                   maxLength={200}
                 />
 
-                <Text style={styles.label}>Danh mục</Text>
+                <Text style={styles.label}>{t('recurring.category')}</Text>
                 <View style={styles.catGrid}>
                   {filteredCats.map((c) => {
                     const selected = editing.category_id === c.id;
@@ -311,7 +311,7 @@ export default function RecurringManage() {
                   })}
                 </View>
 
-                <Text style={styles.label}>Tần suất</Text>
+                <Text style={styles.label}>{t('recurring.frequency')}</Text>
                 <View style={styles.freqWrap}>
                   {FREQ_OPTIONS.map((f) => {
                     const selected = editing.frequency === f;

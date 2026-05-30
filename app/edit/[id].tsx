@@ -166,7 +166,7 @@ export default function EditTransaction() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <Icon name="ChevronRight" size={24} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Sửa giao dịch</Text>
+        <Text style={styles.title}>{t('edit.title')}</Text>
         <TouchableOpacity onPress={confirmDelete}>
           <Text style={styles.deleteText}>{t('common.delete')}</Text>
         </TouchableOpacity>
@@ -229,7 +229,7 @@ export default function EditTransaction() {
           </>
         ) : null}
 
-        <Text style={styles.label}>Số tiền</Text>
+        <Text style={styles.label}>{t('edit.amount')}</Text>
         <View style={styles.amountRow}>
           <TextInput
             style={styles.amountInput}
@@ -240,7 +240,7 @@ export default function EditTransaction() {
           <Text style={styles.currency}>đ</Text>
         </View>
 
-        <Text style={styles.label}>Ghi chú</Text>
+        <Text style={styles.label}>{t('edit.note')}</Text>
         <TextInput style={styles.input} value={note} onChangeText={setNote} />
 
         <Text style={styles.label}>Ảnh đính kèm</Text>
@@ -266,16 +266,16 @@ export default function EditTransaction() {
           <View style={styles.photoBtnRow}>
             <TouchableOpacity style={styles.photoBtn} onPress={takePhoto}>
               <Icon name="Camera" size={16} color={palette.primary} />
-              <Text style={[styles.photoBtnText, { color: palette.primary }]}>Chụp ảnh</Text>
+              <Text style={[styles.photoBtnText, { color: palette.primary }]}>{t('edit.takePhoto')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.photoBtn} onPress={pickPhoto}>
               <Icon name="ImageIcon" size={16} color={palette.primary} />
-              <Text style={[styles.photoBtnText, { color: palette.primary }]}>Chọn ảnh</Text>
+              <Text style={[styles.photoBtnText, { color: palette.primary }]}>{t('edit.pickPhoto')}</Text>
             </TouchableOpacity>
           </View>
         )}
 
-        <Text style={styles.label}>Danh mục</Text>
+        <Text style={styles.label}>{t('edit.category')}</Text>
         <View style={styles.catGrid}>
           {filteredCats.map((c) => {
             const selected = categoryId === c.id;
@@ -302,7 +302,7 @@ export default function EditTransaction() {
           onPress={save}
           disabled={saving}
         >
-          <Text style={styles.submitText}>Lưu thay đổi</Text>
+          <Text style={styles.submitText}>{t('edit.saveChanges')}</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

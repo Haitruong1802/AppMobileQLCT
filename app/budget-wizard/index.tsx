@@ -255,7 +255,7 @@ export default function BudgetWizard() {
         <TouchableOpacity onPress={back} style={styles.backBtn}>
           <Icon name="ChevronLeft" size={24} color={GRAY[800]} strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Gợi ý ngân sách</Text>
+        <Text style={styles.title}>{t('wizard.screenTitle')}</Text>
         <View style={{ width: 32 }} />
       </View>
 
@@ -300,7 +300,7 @@ export default function BudgetWizard() {
 
             {totalIncome > 0 ? (
               <View style={styles.sumBox}>
-                <Text style={styles.sumLabel}>Tổng thu nhập tháng</Text>
+                <Text style={styles.sumLabel}>{t('wizard.totalIncomeMonth')}</Text>
                 <Text style={[styles.sumValue, { color: palette.primary }]}>
                   {formatNumber(totalIncome)}đ
                 </Text>
@@ -312,7 +312,7 @@ export default function BudgetWizard() {
         {/* ============ STEP 2: Chi cố định ============ */}
         {step === 2 ? (
           <>
-            <Text style={styles.stepTitle}>Chi cố định hàng tháng</Text>
+            <Text style={styles.stepTitle}>{t('wizard.fixedTitle')}</Text>
             <Text style={styles.stepHint}>
               Khoản phải trả mỗi tháng (tiền nhà, internet, gói data...). Bux2 tự lấy từ giao dịch lặp +
               hoá đơn. Bạn có thể thêm thủ công.
@@ -343,7 +343,7 @@ export default function BudgetWizard() {
             {/* Form add custom fixed */}
             <Text style={[styles.label, { marginTop: SPACING.lg }]}>+ THÊM KHOẢN CỐ ĐỊNH</Text>
 
-            <Text style={styles.subLabel}>Danh mục</Text>
+            <Text style={styles.subLabel}>{t('wizard.categoryLabel')}</Text>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -392,11 +392,11 @@ export default function BudgetWizard() {
               onPress={addCustomFixed}
             >
               <Icon name="Plus" size={16} color="#fff" />
-              <Text style={styles.addBtnText}>Thêm vào danh sách</Text>
+              <Text style={styles.addBtnText}>{t('wizard.addToList')}</Text>
             </TouchableOpacity>
 
             <View style={styles.sumBox}>
-              <Text style={styles.sumLabel}>Tổng chi cố định</Text>
+              <Text style={styles.sumLabel}>{t('wizard.totalFixed')}</Text>
               <Text style={[styles.sumValue, { color: SEMANTIC.danger.fg }]}>
                 {formatNumber(totalFixed)}đ
               </Text>
@@ -495,7 +495,7 @@ export default function BudgetWizard() {
         {/* ============ STEP 4: Gợi ý phân bổ ============ */}
         {step === 4 && result ? (
           <>
-            <Text style={styles.stepTitle}>Gợi ý phân bổ ngân sách</Text>
+            <Text style={styles.stepTitle}>{t('wizard.allocTitle')}</Text>
             <Text style={styles.stepHint}>
               Chọn 1 trong 3 quy tắc phân bổ phù hợp với bạn. Có thể chỉnh lại trong tab Ngân sách sau.
             </Text>
