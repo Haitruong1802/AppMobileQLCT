@@ -550,6 +550,7 @@ export const en = {
   'wallets.title': 'Manage wallets',
   'wallets.total': 'Total balance',
   'wallets.totalSub': '{n} wallets',
+  'wallets.totalSubOne': '1 wallet',
   'wallets.defaultTag': 'default',
   'wallets.addBtn': 'Add wallet',
   'wallets.transferBtn': 'Transfer',

@@ -214,7 +214,9 @@ export default function WalletsManage() {
           <Text style={styles.totalLabel}>{t('wallets.total')}</Text>
           <Text style={styles.totalValue}>{formatNumber(totalBalance)}đ</Text>
           <Text style={styles.totalSub}>
-            {t('wallets.totalSub', { n: wallets.length })}
+            {wallets.length === 1
+              ? t('wallets.totalSubOne')
+              : t('wallets.totalSub', { n: wallets.length })}
           </Text>
         </View>
 

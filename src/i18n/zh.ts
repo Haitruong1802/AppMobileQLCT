@@ -550,6 +550,7 @@ export const zh = {
   'wallets.title': '钱包管理',
   'wallets.total': '总余额',
   'wallets.totalSub': '{n} 个钱包',
+  'wallets.totalSubOne': '1 个钱包',
   'wallets.defaultTag': '默认',
   'wallets.addBtn': '添加钱包',
   'wallets.transferBtn': '转账',
