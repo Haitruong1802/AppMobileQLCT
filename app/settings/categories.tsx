@@ -155,7 +155,7 @@ export default function CategoriesManage() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <Icon name="ChevronLeft" size={24} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Quản lý danh mục</Text>
+        <Text style={styles.title}>{t('categories.title')}</Text>
         <TouchableOpacity onPress={openCreate} style={styles.addTopBtn} accessibilityLabel="Thêm danh mục">
           <Icon name="Sparkles" size={20} color={palette.primary} />
         </TouchableOpacity>
@@ -224,7 +224,7 @@ export default function CategoriesManage() {
                 {editing.id ? 'Sửa danh mục' : 'Thêm danh mục'}
               </Text>
 
-              <Text style={styles.label}>Tên</Text>
+              <Text style={styles.label}>{t('categories.nameLabel')}</Text>
               <TextInput
                 style={styles.input}
                 value={editing.name}
@@ -234,7 +234,7 @@ export default function CategoriesManage() {
                 maxLength={30}
               />
 
-              <Text style={styles.label}>Biểu tượng</Text>
+              <Text style={styles.label}>{t('categories.iconLabel')}</Text>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.iconRow}>
                 {ICON_CHOICES.map((n) => {
                   const selected = editing.icon === n;
@@ -253,7 +253,7 @@ export default function CategoriesManage() {
                 })}
               </ScrollView>
 
-              <Text style={styles.label}>Màu</Text>
+              <Text style={styles.label}>{t('categories.colorLabel')}</Text>
               <View style={styles.colorRow}>
                 {COLOR_CHOICES.map((col) => {
                   const selected = editing.color === col;
@@ -271,7 +271,7 @@ export default function CategoriesManage() {
 
               {!editing.id ? (
                 <>
-                  <Text style={styles.label}>Loại</Text>
+                  <Text style={styles.label}>{t('categories.typeLabel')}</Text>
                   <View style={styles.typeTabs}>
                     <TouchableOpacity
                       style={[styles.typeTab, editing.type === 'expense' && styles.typeTabActive]}

@@ -16,6 +16,8 @@ import { useStore } from '../../src/store/useStore';
 import { usePremiumTier } from '../../src/store/usePremium';
 import { PALETTES, Palette } from '../../src/theme/colors';
 import { useTheme } from '../../src/store/useTheme';
+import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { ProUpgradeModal } from '../../src/components/ProUpgradeModal';
 import { notify } from '../../src/utils/notify';
 
@@ -24,6 +26,7 @@ export default function ThemeScreen() {
   const settings = useStore((s) => s.settings);
   const updateSetting = useStore((s) => s.updateSetting);
   const tier = usePremiumTier();
+  useT();
   const activePalette = useTheme();
   const currentKey = settings.theme || activePalette.key;
 
@@ -56,18 +59,18 @@ export default function ThemeScreen() {
         >
           <Icon name="ChevronLeft" size={22} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Theme màu</Text>
+        <Text style={styles.title}>{t('theme.titleScreen')}</Text>
         <View style={{ width: 32 }} />
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        <Text style={styles.heading}>Tùy chỉnh giao diện</Text>
+        <Text style={styles.heading}>{t('theme.subtitle')}</Text>
         <Text style={styles.subheading}>
           Chọn bảng màu phù hợp với phong cách của bạn. Theme cao cấp dành cho gói Pro.
         </Text>
 
         {/* Free section */}
-        <Text style={styles.sectionLabel}>Cơ bản</Text>
+        <Text style={styles.sectionLabel}>{t('theme.basic')}</Text>
         <View style={styles.list}>
           {freeThemes.map((p) => (
             <ThemeRow
@@ -81,7 +84,7 @@ export default function ThemeScreen() {
         </View>
 
         {/* Premium section */}
-        <Text style={styles.sectionLabel}>Cao cấp</Text>
+        <Text style={styles.sectionLabel}>{t('theme.premium')}</Text>
         <View style={styles.list}>
           {premiumThemes.map((p) => (
             <ThemeRow
@@ -158,7 +161,7 @@ function ThemeRow({
           {palette.isPremium ? (
             <View style={styles.premiumChip}>
               <Icon name="Crown" size={10} color="#92400e" strokeWidth={2.5} />
-              <Text style={styles.premiumChipText}>Cao cấp</Text>
+              <Text style={styles.premiumChipText}>{t('theme.premium')}</Text>
             </View>
           ) : null}
         </View>

@@ -13,6 +13,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Icon } from '../../src/components/Icon';
 import { useTheme } from '../../src/store/useTheme';
+import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { PREMIUM_PRICING, FREE_LIMITS, packageLabel, PremiumPackage } from '../../src/services/premium';
 import { activatePremium, deactivatePremium, restorePremium, usePremiumState } from '../../src/store/usePremium';
 import { notify } from '../../src/utils/notify';
@@ -45,6 +47,7 @@ const BENEFITS: Benefit[] = [
 
 export default function Premium() {
   const router = useRouter();
+  useT();
   const palette = useTheme();
   const state = usePremiumState();
   const [picked, setPicked] = useState<PremiumPackage>('yearly');
@@ -127,16 +130,14 @@ export default function Premium() {
           <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
             <Icon name="ChevronLeft" size={24} color="#1f2937" strokeWidth={2.5} />
           </TouchableOpacity>
-          <Text style={styles.title}>Tính năng Bux2</Text>
+          <Text style={styles.title}>{t('premium.screenTitle')}</Text>
           <View style={{ width: 32 }} />
         </View>
         <ScrollView contentContainerStyle={styles.container}>
           <View style={[styles.hero, { backgroundColor: palette.primary }]}>
             <Icon name="Crown" size={36} color="#fff" />
-            <Text style={styles.heroTitle}>Đang mở khoá toàn bộ</Text>
-            <Text style={styles.heroSub}>
-              Bản phát hành sớm, tất cả tính năng cao cấp đang miễn phí. Cảm ơn bạn đã đồng hành cùng Bux2.
-            </Text>
+            <Text style={styles.heroTitle}>{t('premium.unlockingAll')}</Text>
+            <Text style={styles.heroSub}>{t('premium.heroSub')}</Text>
           </View>
 
           <View style={styles.benefitsList}>
@@ -151,7 +152,7 @@ export default function Premium() {
                 </View>
                 {b.comingSoon ? (
                   <View style={styles.comingSoonBadge}>
-                    <Text style={styles.comingSoonText}>Sắp ra mắt</Text>
+                    <Text style={styles.comingSoonText}>{t('premium.comingSoon')}</Text>
                   </View>
                 ) : (
                   <Icon name="Check" size={18} color={palette.primary} />
@@ -191,7 +192,7 @@ export default function Premium() {
                 <Icon name="Crown" size={24} color="#fbbf24" strokeWidth={2.5} />
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={styles.proHeroTitleSm}>Pro đang hoạt động</Text>
+                <Text style={styles.proHeroTitleSm}>{t('premium.proActive')}</Text>
                 <View style={styles.proHeroStatusRow}>
                   <View style={styles.statusDot} />
                   <Text style={styles.proHeroStatusText}>{packageLabel(state.package)}</Text>
@@ -202,18 +203,18 @@ export default function Premium() {
             <View style={styles.proMetaGrid}>
               {state.activatedAt ? (
                 <View style={styles.proMetaCell}>
-                  <Text style={styles.proMetaLabel}>Kích hoạt</Text>
+                  <Text style={styles.proMetaLabel}>{t('premium.activated')}</Text>
                   <Text style={styles.proMetaValue}>{formatDate(state.activatedAt, 'dd/MM/yyyy')}</Text>
                 </View>
               ) : null}
               {state.isLifetime ? (
                 <View style={styles.proMetaCell}>
-                  <Text style={styles.proMetaLabel}>Thời hạn</Text>
-                  <Text style={[styles.proMetaValue, { color: '#fbbf24' }]}>Trọn đời</Text>
+                  <Text style={styles.proMetaLabel}>{t('premium.duration')}</Text>
+                  <Text style={[styles.proMetaValue, { color: '#fbbf24' }]}>{t('premium.lifetime')}</Text>
                 </View>
               ) : state.expiresAt ? (
                 <View style={styles.proMetaCell}>
-                  <Text style={styles.proMetaLabel}>Hết hạn</Text>
+                  <Text style={styles.proMetaLabel}>{t('premium.expires')}</Text>
                   <Text style={styles.proMetaValue}>
                     {state.daysLeft !== null && state.daysLeft >= 0 ? `Còn ${state.daysLeft} ngày` : 'Hết hạn'}
                   </Text>
@@ -228,7 +229,7 @@ export default function Premium() {
             onPress={() => setShowBenefits((v) => !v)}
             activeOpacity={0.7}
           >
-            <Text style={styles.collapseLabel}>Quyền lợi đang dùng</Text>
+            <Text style={styles.collapseLabel}>{t('premium.benefitsCurrent')}</Text>
             <Icon name={showBenefits ? 'ChevronLeft' : 'ChevronRight'} size={18} color="#9ca3af" />
           </TouchableOpacity>
           {showBenefits ? (
@@ -243,7 +244,7 @@ export default function Premium() {
                   </View>
                   {b.comingSoon ? (
                     <View style={styles.comingSoonBadge}>
-                      <Text style={styles.comingSoonText}>Sắp ra mắt</Text>
+                      <Text style={styles.comingSoonText}>{t('premium.comingSoon')}</Text>
                     </View>
                   ) : (
                     <Icon name="Check" size={18} color={palette.primary} />
@@ -314,7 +315,7 @@ export default function Premium() {
           ))}
         </View>
 
-        <Text style={styles.sectionLabel}>Chọn gói</Text>
+        <Text style={styles.sectionLabel}>{t('premium.choosePlan')}</Text>
         <View style={styles.pricingList}>
           {(Object.keys(PREMIUM_PRICING) as PremiumPackage[]).map((key) => {
             const p = PREMIUM_PRICING[key];
@@ -361,7 +362,7 @@ export default function Premium() {
 
         {/* v3.150 — Khôi phục giao dịch mua (cho user đổi máy / cài lại app) */}
         <View style={styles.restoreBox}>
-          <Text style={styles.restoreTitle}>Khôi phục giao dịch mua</Text>
+          <Text style={styles.restoreTitle}>{t('premium.restoreTitle')}</Text>
           <Text style={styles.restoreDesc}>
             Dùng khi bạn đổi máy, cài lại app hoặc đã mua Pro nhưng app chưa nhận diện gói.
           </Text>
