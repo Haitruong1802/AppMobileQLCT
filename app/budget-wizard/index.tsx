@@ -131,8 +131,8 @@ export default function BudgetWizard() {
   }, [step, totalIncome, fixedExpenses, ruleSavingsTarget, categories, transactions, selectedRuleId]);
 
   function next() {
-    if (step === 1 && totalIncome <= 0) return notify('Nhập thu nhập tháng');
-    if (step === 3 && savingsTarget < 0) return notify('Tiết kiệm không hợp lệ');
+    if (step === 1 && totalIncome <= 0) return notify(t('err.incomeRequired'));
+    if (step === 3 && savingsTarget < 0) return notify(t('err.savingsInvalid'));
     if (step < 4) setStep(step + 1);
   }
   function back() {
@@ -220,7 +220,7 @@ export default function BudgetWizard() {
         console.warn('[wizard] auto goal update fail:', e);
       }
 
-      notify('Đã áp dụng ngân sách + tạo Quỹ tiết kiệm cho tháng này');
+      notify(t('wizard.applied'));
       router.replace('/(tabs)/budget');
     } catch (e: any) {
       notify(`Lỗi: ${e?.message || 'unknown'}`);
@@ -236,7 +236,7 @@ export default function BudgetWizard() {
   function addCustomFixed() {
     const amt = parseInt(addAmount.replace(/\D/g, ''), 10) || 0;
     if (!addCatId || amt <= 0) {
-      return notify('Chọn danh mục và nhập số tiền');
+      return notify(t('err.pickCatAndAmount'));
     }
     const cat = categories.find((c) => c.id === addCatId);
     if (!cat) return;

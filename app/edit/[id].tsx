@@ -50,7 +50,7 @@ export default function EditTransaction() {
     (async () => {
       const tx = await getTransaction(txId);
       if (!tx) {
-        notify('Không tìm thấy giao dịch');
+        notify(t('err.txNotFound'));
         router.back();
         return;
       }
@@ -68,8 +68,8 @@ export default function EditTransaction() {
   async function save() {
     if (saving) return; // v3.58 — guard double-tap
     const n = parseInt(amount.replace(/\D/g, ''), 10);
-    if (!n || n <= 0) return notify('Nhập số tiền');
-    if (!categoryId) return notify('Chọn danh mục');
+    if (!n || n <= 0) return notify(t('input.err.noAmount'));
+    if (!categoryId) return notify(t('input.err.noCategory'));
     setSaving(true);
     try {
       await updateTx(txId, { amount: n, category_id: categoryId, wallet_id: walletId ?? undefined, note, type, date, photo_uri: photoUri });
@@ -82,7 +82,7 @@ export default function EditTransaction() {
           /* noop */
         }
       }
-      notify('Đã cập nhật');
+      notify(t('updated'));
       router.back();
     } catch (e: any) {
       // v3.57 — Catch lỗi từ store guard (vd date tương lai) để user thấy feedback
@@ -101,7 +101,7 @@ export default function EditTransaction() {
       let perm = await ImagePicker.getMediaLibraryPermissionsAsync();
       if (perm.status !== 'granted') {
         perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (perm.status !== 'granted') return notify('Cần quyền thư viện ảnh');
+        if (perm.status !== 'granted') return notify(t('err.photoLibPermission'));
       }
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -121,7 +121,7 @@ export default function EditTransaction() {
       let perm = await ImagePicker.getCameraPermissionsAsync();
       if (perm.status !== 'granted') {
         perm = await ImagePicker.requestCameraPermissionsAsync();
-        if (perm.status !== 'granted') return notify('Cần quyền camera');
+        if (perm.status !== 'granted') return notify(t('err.cameraPermission'));
       }
       const result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,

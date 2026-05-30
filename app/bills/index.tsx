@@ -117,8 +117,8 @@ export default function BillsManage() {
   async function save() {
     if (!editing) return;
     const amt = parseInt(editing.amount.replace(/\D/g, ''), 10);
-    if (!editing.name.trim()) return notify('Nhập tên hoá đơn');
-    if (!amt || amt <= 0) return notify('Nhập số tiền');
+    if (!editing.name.trim()) return notify(t('err.billNameRequired'));
+    if (!amt || amt <= 0) return notify(t('input.err.noAmount'));
     try {
       if (editing.id) {
         await updateBill(editing.id, {
@@ -148,7 +148,7 @@ export default function BillsManage() {
   function startPay(b: Bill) {
     const def = wallets.find((w) => w.is_default === 1) || wallets[0];
     if (!def) {
-      notify('Không có ví');
+      notify(t('err.noWallet2'));
       return;
     }
     setPaying({ bill: b, walletId: def.id });

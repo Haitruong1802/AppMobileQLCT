@@ -103,14 +103,14 @@ export default function Goals() {
     const name = editing.name.trim();
     const target = parseInt(editing.target.replace(/\D/g, ''), 10);
     // v3.134 — Validation chặt hơn
-    if (!name) return notify('Nhập tên mục tiêu', 'error');
-    if (name.length > 50) return notify('Tên mục tiêu tối đa 50 ký tự', 'error');
-    if (!target || target <= 0) return notify('Nhập số tiền đích', 'error');
-    if (target > 9_999_999_999) return notify('Số tiền quá lớn', 'error');
+    if (!name) return notify(t('err.goalNameRequired'), 'error');
+    if (name.length > 50) return notify(t('err.goalNameTooLong'), 'error');
+    if (!target || target <= 0) return notify(t('err.targetRequired'), 'error');
+    if (target > 9_999_999_999) return notify(t('err.amountTooLarge'), 'error');
     if (editing.deadline) {
       // v3.146 — Dùng todayISO() local thay vì toISOString() UTC để tránh lệch ngày
       //   khi user ở UTC+7 lúc 6h sáng (UTC còn hôm qua).
-      if (editing.deadline < todayISO()) return notify('Hạn không thể là quá khứ', 'error');
+      if (editing.deadline < todayISO()) return notify(t('err.deadlinePast'), 'error');
     }
     await saveGuard.run(async () => {
       try {
@@ -144,8 +144,8 @@ export default function Goals() {
   async function doAdd() {
     if (!addingTo) return;
     const amt = parseInt(addingTo.amount.replace(/\D/g, ''), 10);
-    if (!amt || amt <= 0) return notify('Nhập số tiền', 'error');
-    if (amt > 9_999_999_999) return notify('Số tiền quá lớn', 'error');
+    if (!amt || amt <= 0) return notify(t('input.err.noAmount'), 'error');
+    if (amt > 9_999_999_999) return notify(t('err.amountTooLarge'), 'error');
     await addGuard.run(async () => {
       try {
         const updated = await addToSavingsGoal(addingTo.goal.id, amt);
