@@ -38,6 +38,8 @@ export const vi = {
   'input.err.libPermission': 'Cần quyền truy cập thư viện ảnh',
   'input.err.camPermission': 'Cần quyền camera',
   'input.err.parseFailed': 'Không hiểu số tiền. Thử "Ăn trưa 60k" hoặc "Lương 12tr".',
+  'input.filledWithCat': 'Đã điền {amount}đ, {cat}. Kiểm tra danh mục bên dưới.',
+  'input.filledNoCat': 'Đã điền {amount}đ. Chọn danh mục bên dưới.',
   'report.weekCompare': 'So sánh tuần',
   'report.thisWeek': 'Tuần này',
   'report.lastWeek': 'Tuần trước',

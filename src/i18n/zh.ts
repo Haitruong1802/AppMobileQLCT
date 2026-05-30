@@ -38,6 +38,8 @@ export const zh = {
   'input.err.libPermission': '需要相册访问权限',
   'input.err.camPermission': '需要相机权限',
   'input.err.parseFailed': '无法识别金额。请尝试 "午餐 60k" 或 "工资 12m"。',
+  'input.filledWithCat': '已填 {amount}đ，{cat}。请检查下方分类。',
+  'input.filledNoCat': '已填 {amount}đ。请在下方选择分类。',
   'report.weekCompare': '周对比',
   'report.thisWeek': '本周',
   'report.lastWeek': '上周',

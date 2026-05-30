@@ -401,11 +401,13 @@ export default function NhapVao() {
         const cat = categories.find((c) => c.id === localCatId);
         setCategoryId(localCatId);
         notify(
-          `Đã điền ${formatNumber(localAmount)}đ${cat ? ', ' + displayCategoryName(cat) : ''}. Kiểm tra danh mục bên dưới.`
+          cat
+            ? t('input.filledWithCat', { amount: formatNumber(localAmount), cat: displayCategoryName(cat) })
+            : t('input.filledNoCat', { amount: formatNumber(localAmount) })
         );
       } else {
         setCategoryId(null);
-        notify(`Đã điền ${formatNumber(localAmount)}đ. Chọn danh mục bên dưới.`);
+        notify(t('input.filledNoCat', { amount: formatNumber(localAmount) }));
       }
 
       // Scroll xuống category section để user kiểm tra / chọn

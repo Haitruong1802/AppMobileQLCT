@@ -38,6 +38,8 @@ export const en = {
   'input.err.libPermission': 'Photo library access required',
   'input.err.camPermission': 'Camera access required',
   'input.err.parseFailed': 'Could not parse amount. Try "Lunch 60k" or "Salary 12m".',
+  'input.filledWithCat': 'Filled {amount}đ, {cat}. Check the category below.',
+  'input.filledNoCat': 'Filled {amount}đ. Pick a category below.',
   'report.weekCompare': 'Weekly comparison',
   'report.thisWeek': 'This week',
   'report.lastWeek': 'Last week',
