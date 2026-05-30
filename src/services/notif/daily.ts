@@ -2,6 +2,7 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { isScheduled, cancelById } from './_shared';
+import { t } from '../../i18n';
 
 export const DAILY_ID = 'bop-daily-reminder';
 
@@ -10,7 +11,7 @@ export async function scheduleDailyReminder(hour: number, minute: number): Promi
   try {
     if (Platform.OS === 'android') {
       await Notifications.setNotificationChannelAsync('daily-reminder', {
-        name: 'Nhắc ghi chi tiêu',
+        name: t('notif.daily.channel'),
         importance: Notifications.AndroidImportance.HIGH,
         sound: 'default',
       });
@@ -18,8 +19,8 @@ export async function scheduleDailyReminder(hour: number, minute: number): Promi
     const id = await Notifications.scheduleNotificationAsync({
       identifier: DAILY_ID,
       content: {
-        title: 'Nhắc ghi chi tiêu',
-        body: 'Hôm nay bạn đã chi những gì? Vào ghi nhanh trong 30 giây.',
+        title: t('notif.daily.title'),
+        body: t('notif.daily.body'),
         sound: 'default',
       },
       trigger: {

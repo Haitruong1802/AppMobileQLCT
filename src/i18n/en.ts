@@ -170,6 +170,17 @@ export const en = {
   'msg.proReset': 'Reset to Free (DEV)',
   'msg.catHidden': 'Default category hidden',
   'msg.dbOptimized': 'Database optimized',
+  'notif.daily.channel': 'Daily reminder',
+  'notif.daily.title': 'Log your spending',
+  'notif.daily.body': "What did you spend today? Quick-log in 30 seconds.",
+  'notif.morning.channel': 'Morning budget',
+  'notif.morning.title': "Today's budget",
+  'notif.morning.body': "Start the day by checking today's budget.",
+  'notif.budget.channel': 'Budget alert',
+  'notif.budget.over': 'Budget exceeded',
+  'notif.budget.near': 'Near budget limit',
+  'notif.budget.most': 'Most of budget used',
+  'notif.budget.body': 'Tap to view details and adjust.',
 
   // ── Calendar ──
   'calendar.title': 'Calendar',

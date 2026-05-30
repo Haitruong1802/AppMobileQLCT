@@ -2,9 +2,9 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { requestNotificationPermission } from './_shared';
-import { MORNING_VARIANTS } from './morning';
 import { SUMMARY_VARIANTS } from './summary';
 import { SAVINGS_VARIANTS } from './savings';
+import { t } from '../../i18n';
 
 export async function sendTestNotification(): Promise<boolean> {
   const ok = await requestNotificationPermission();
@@ -54,8 +54,8 @@ export async function sendAllTestNotifications(): Promise<number> {
 
   const items: { title: string; body: string; data: any; delay: number }[] = [
     {
-      title: 'Hạn mức hôm nay',
-      body: MORNING_VARIANTS[Math.floor(Math.random() * MORNING_VARIANTS.length)],
+      title: t('notif.morning.title'),
+      body: t('notif.morning.body'),
       data: { screen: '/summary/today' },
       delay: 3,
     },

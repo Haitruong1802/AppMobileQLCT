@@ -170,6 +170,17 @@ export const zh = {
   'msg.proReset': '已重置为免费版（DEV）',
   'msg.catHidden': '已隐藏默认分类',
   'msg.dbOptimized': '数据库已优化',
+  'notif.daily.channel': '每日提醒',
+  'notif.daily.title': '记录今日开支',
+  'notif.daily.body': '今天有什么开支？30 秒快速记录。',
+  'notif.morning.channel': '早间预算',
+  'notif.morning.title': '今日预算',
+  'notif.morning.body': '查看今日预算，开启新的一天。',
+  'notif.budget.channel': '预算警报',
+  'notif.budget.over': '已超预算',
+  'notif.budget.near': '接近预算上限',
+  'notif.budget.most': '已使用大部分预算',
+  'notif.budget.body': '点击查看详情并调整。',
 
   // ── Calendar ──
   'calendar.title': '日历',

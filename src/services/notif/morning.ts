@@ -3,16 +3,9 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { isScheduled, cancelById } from './_shared';
+import { t } from '../../i18n';
 
 export const MORNING_BUDGET_ID = 'bop-morning-budget';
-
-export const MORNING_VARIANTS = [
-  'Chào buổi sáng. Hạn mức chi hôm nay đã sẵn sàng, vào xem nhé.',
-  'Bắt đầu ngày mới bằng cách xem ngân sách của bạn hôm nay.',
-  'Sáng nay bạn có thể xài thoải mái bao nhiêu? Mở app xem ngay.',
-  'Một ngày mới, hạn mức mới. Tap để xem chi tiết.',
-  'Hạn mức hôm nay đã cập nhật. Lướt qua 30 giây trước khi bắt đầu ngày.',
-];
 
 export async function scheduleMorningBudget(
   hour: number = 9,
@@ -22,17 +15,16 @@ export async function scheduleMorningBudget(
   try {
     if (Platform.OS === 'android') {
       await Notifications.setNotificationChannelAsync('morning-budget', {
-        name: 'Hạn mức sáng',
+        name: t('notif.morning.channel'),
         importance: Notifications.AndroidImportance.DEFAULT,
         sound: 'default',
       });
     }
-    const body = MORNING_VARIANTS[Math.floor(Math.random() * MORNING_VARIANTS.length)];
     const id = await Notifications.scheduleNotificationAsync({
       identifier: MORNING_BUDGET_ID,
       content: {
-        title: 'Hạn mức hôm nay',
-        body,
+        title: t('notif.morning.title'),
+        body: t('notif.morning.body'),
         sound: 'default',
         data: { screen: '/summary/today' },
       },

@@ -170,6 +170,17 @@ export const vi = {
   'msg.proReset': 'Đã reset về Free (DEV)',
   'msg.catHidden': 'Đã ẩn danh mục mặc định',
   'msg.dbOptimized': 'Đã tối ưu cơ sở dữ liệu',
+  'notif.daily.channel': 'Nhắc ghi chi tiêu',
+  'notif.daily.title': 'Nhắc ghi chi tiêu',
+  'notif.daily.body': 'Hôm nay bạn đã chi những gì? Vào ghi nhanh trong 30 giây.',
+  'notif.morning.channel': 'Hạn mức sáng',
+  'notif.morning.title': 'Hạn mức hôm nay',
+  'notif.morning.body': 'Bắt đầu ngày mới bằng cách xem ngân sách của bạn hôm nay.',
+  'notif.budget.channel': 'Cảnh báo ngân sách',
+  'notif.budget.over': 'Đã vượt ngân sách',
+  'notif.budget.near': 'Sắp chạm ngân sách',
+  'notif.budget.most': 'Đã dùng phần lớn ngân sách',
+  'notif.budget.body': 'Tap để xem chi tiết và điều chỉnh.',
 
   // ── Tab Lịch ──
   'calendar.title': 'Lịch',

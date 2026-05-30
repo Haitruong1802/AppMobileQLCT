@@ -3,6 +3,7 @@
 // Body generic không chứa PII (số tiền, tên category) để không lộ trên lock screen.
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
+import { t } from '../../i18n';
 
 export type BudgetThreshold = 80 | 90 | 100;
 
@@ -17,7 +18,7 @@ export async function notifyOverBudget(opts: {
   try {
     if (Platform.OS === 'android') {
       await Notifications.setNotificationChannelAsync('budget-alert', {
-        name: 'Cảnh báo ngân sách',
+        name: t('notif.budget.channel'),
         importance: Notifications.AndroidImportance.HIGH,
         sound: 'default',
       });
@@ -25,14 +26,14 @@ export async function notifyOverBudget(opts: {
     const pct = opts.threshold ?? Math.round((opts.spent / opts.budget) * 100);
     const title =
       pct >= 100
-        ? 'Đã vượt ngân sách'
+        ? t('notif.budget.over')
         : pct >= 90
-          ? 'Sắp chạm ngân sách'
-          : 'Đã dùng phần lớn ngân sách';
+          ? t('notif.budget.near')
+          : t('notif.budget.most');
     await Notifications.scheduleNotificationAsync({
       content: {
         title,
-        body: 'Tap để xem chi tiết và điều chỉnh.',
+        body: t('notif.budget.body'),
         sound: 'default',
         data: { screen: '/(tabs)/budget', pct, spent: opts.spent, budget: opts.budget },
       },
