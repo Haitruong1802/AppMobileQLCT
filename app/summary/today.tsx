@@ -17,6 +17,7 @@ import { useStore } from '../../src/store/useStore';
 import { formatNumber } from '../../src/utils/format';
 import { todayISO, formatDate } from '../../src/utils/date';
 import { useT } from '../../src/i18n/useT';
+import { t } from '../../src/i18n';
 import { displayCategoryName } from '../../src/i18n/categoryName';
 
 const MAX_TX_LIST = 5;
@@ -86,16 +87,16 @@ export default function SummaryToday() {
 
   // Trạng thái dòng tiền — chuyên nghiệp, không phán xét
   const cashFlowText = useMemo(() => {
-    if (todayTx.length === 0) return 'Chưa có giao dịch nào trong hôm nay.';
+    if (todayTx.length === 0) return t('summary.today.empty');
     if (todayIncome === 0 && todayExpense > 0) {
-      return 'Hôm nay chỉ có khoản chi, chưa ghi nhận thu nhập.';
+      return t('summary.today.onlyExpense');
     }
     if (todayExpense === 0 && todayIncome > 0) {
-      return 'Hôm nay chỉ có khoản thu, chưa phát sinh chi tiêu.';
+      return t('summary.today.onlyIncome');
     }
-    if (netToday > 0) return 'Dòng tiền hôm nay đang dương.';
-    if (netToday < 0) return 'Chi tiêu hôm nay đang cao hơn thu nhập.';
-    return 'Thu chi hôm nay đang cân bằng.';
+    if (netToday > 0) return t('summary.today.flowPositive');
+    if (netToday < 0) return t('summary.today.flowNegative');
+    return t('summary.today.flowBalance');
   }, [todayTx, todayIncome, todayExpense, netToday]);
 
   // Format thời gian giao dịch (từ created_at)
@@ -136,7 +137,7 @@ export default function SummaryToday() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <Icon name="ChevronLeft" size={24} color="#1f2937" strokeWidth={2.5} />
         </TouchableOpacity>
-        <Text style={styles.title}>Tóm tắt hôm nay</Text>
+        <Text style={styles.title}>{t('summary.today.title')}</Text>
         <View style={{ width: 32 }} />
       </View>
 
@@ -144,25 +145,25 @@ export default function SummaryToday() {
         {/* ── HEADER ── */}
         <View style={styles.headerBlock}>
           <Text style={styles.dateLabel}>{todayLabel}</Text>
-          <Text style={styles.headerSub}>Tổng quan nhanh tình hình thu chi trong ngày.</Text>
+          <Text style={styles.headerSub}>{t('summary.today.sub')}</Text>
         </View>
 
         {/* ── KPI GRID ── */}
         <View style={styles.kpiGrid}>
           <View style={styles.kpiCard}>
-            <Text style={styles.kpiLabel}>Thu hôm nay</Text>
+            <Text style={styles.kpiLabel}>{t('summary.today.income')}</Text>
             <Text style={[styles.kpiValue, { color: '#10b981' }]} numberOfLines={1}>
               {formatNumber(todayIncome)}đ
             </Text>
           </View>
           <View style={styles.kpiCard}>
-            <Text style={styles.kpiLabel}>Chi hôm nay</Text>
+            <Text style={styles.kpiLabel}>{t('summary.today.expense')}</Text>
             <Text style={[styles.kpiValue, { color: '#dc2626' }]} numberOfLines={1}>
               {formatNumber(todayExpense)}đ
             </Text>
           </View>
           <View style={styles.kpiCard}>
-            <Text style={styles.kpiLabel}>Chênh lệch</Text>
+            <Text style={styles.kpiLabel}>{t('summary.today.net')}</Text>
             <Text
               style={[styles.kpiValue, { color: netToday > 0 ? '#10b981' : netToday < 0 ? '#dc2626' : '#374151' }]}
               numberOfLines={1}
@@ -172,7 +173,7 @@ export default function SummaryToday() {
             </Text>
           </View>
           <View style={styles.kpiCard}>
-            <Text style={styles.kpiLabel}>Giao dịch</Text>
+            <Text style={styles.kpiLabel}>{t('summary.today.txCount')}</Text>
             <Text style={[styles.kpiValue, { color: '#111827' }]}>{todayTx.length}</Text>
           </View>
         </View>
@@ -186,10 +187,10 @@ export default function SummaryToday() {
         {/* ── GIAO DỊCH HÔM NAY ── */}
         <View style={styles.section}>
           <View style={styles.sectionHead}>
-            <Text style={styles.sectionTitle}>Giao dịch hôm nay</Text>
+            <Text style={styles.sectionTitle}>{t('summary.today.txList')}</Text>
             {todayTx.length > MAX_TX_LIST ? (
               <TouchableOpacity onPress={() => router.replace('/(tabs)/calendar')}>
-                <Text style={[styles.linkText, { color: palette.primary }]}>Xem thêm</Text>
+                <Text style={[styles.linkText, { color: palette.primary }]}>{t('summary.today.seeMore')}</Text>
               </TouchableOpacity>
             ) : null}
           </View>
@@ -197,9 +198,9 @@ export default function SummaryToday() {
           {recentTx.length === 0 ? (
             <View style={styles.emptyBlock}>
               <Icon name="Receipt" size={32} color="#d1d5db" />
-              <Text style={styles.emptyTitle}>Chưa có giao dịch nào trong hôm nay.</Text>
+              <Text style={styles.emptyTitle}>{t('summary.today.empty')}</Text>
               <Text style={styles.emptyDesc}>
-                Thêm giao dịch đầu tiên để theo dõi dòng tiền trong ngày.
+                {t('summary.today.emptyDesc')}
               </Text>
             </View>
           ) : (
@@ -238,7 +239,7 @@ export default function SummaryToday() {
 
         {/* ── PHÂN BỔ CHI TIÊU ── */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Phân bổ chi tiêu hôm nay</Text>
+          <Text style={styles.sectionTitle}>{t('summary.today.allocTitle')}</Text>
           {expenseByCat.length === 0 ? (
             <View style={styles.emptyBlockSm}>
               <Text style={styles.emptyText}>Chưa có khoản chi nào trong hôm nay.</Text>
@@ -257,7 +258,7 @@ export default function SummaryToday() {
                   <View style={styles.catBar}>
                     <View style={[styles.catBarFill, { width: `${c.pct * 100}%`, backgroundColor: c.color }]} />
                   </View>
-                  <Text style={styles.catPct}>{Math.round(c.pct * 100)}% tổng chi</Text>
+                  <Text style={styles.catPct}>{t('summary.today.totalPct', { pct: Math.round(c.pct * 100) })}</Text>
                 </View>
               ))}
             </View>
@@ -272,7 +273,7 @@ export default function SummaryToday() {
             activeOpacity={0.85}
           >
             <Icon name="Plus" size={18} color="#fff" strokeWidth={2.5} />
-            <Text style={styles.actionPrimaryText}>Thêm giao dịch</Text>
+            <Text style={styles.actionPrimaryText}>{t('summary.today.addTx')}</Text>
           </TouchableOpacity>
           <View style={styles.actionRow}>
             <TouchableOpacity
@@ -281,7 +282,7 @@ export default function SummaryToday() {
               activeOpacity={0.85}
             >
               <Icon name="CalendarDays" size={16} color="#374151" />
-              <Text style={styles.actionSecondaryText}>Xem giao dịch</Text>
+              <Text style={styles.actionSecondaryText}>{t('summary.today.viewCal')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.actionSecondary}
@@ -289,7 +290,7 @@ export default function SummaryToday() {
               activeOpacity={0.85}
             >
               <Icon name="Crown" size={16} color="#374151" />
-              <Text style={styles.actionSecondaryText}>Mục tiêu</Text>
+              <Text style={styles.actionSecondaryText}>{t('summary.today.viewGoals')}</Text>
             </TouchableOpacity>
           </View>
         </View>
