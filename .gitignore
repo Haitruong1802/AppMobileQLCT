@@ -33,6 +33,15 @@ yarn-error.*
 # local env files
 .env*.local
 
+# binaries / installers (too large for GitHub)
+*.apk
+*.aab
+*.ipa
+
+# local test artifacts
+_emu.png
+_expo_log.txt
+
 # typescript
 *.tsbuildinfo
 

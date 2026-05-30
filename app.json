@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "BopAI",
-    "slug": "BopAI",
+    "name": "Bux2",
+    "slug": "bopai",
+    "scheme": "bopai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,18 +14,62 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.haitruong1804.bopai",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "Bux2 cần camera để bạn chụp hoá đơn đính kèm vào giao dịch.",
+        "NSPhotoLibraryUsageDescription": "Bux2 cần truy cập thư viện ảnh để bạn chọn hoá đơn đính kèm vào giao dịch.",
+        "NSFaceIDUsageDescription": "Bux2 dùng Face ID để mở khoá app, bảo vệ dữ liệu chi tiêu của bạn.",
+        "NSUserNotificationsUsageDescription": "Bux2 gửi nhắc nhở mỗi ngày để bạn không quên ghi sổ và tổng kết chi tiêu."
+      }
     },
     "android": {
+      "package": "com.haitruong1804.bopai",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-sqlite",
+      "expo-router",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Bux2 cần camera để bạn chụp hoá đơn đính kèm vào giao dịch."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Bux2 cần truy cập thư viện ảnh để bạn chọn hoá đơn đính kèm vào giao dịch.",
+          "cameraPermission": "Bux2 cần camera để bạn chụp hoá đơn đính kèm vào giao dịch."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#10b981"
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "65070a2d-288c-46ce-b083-aba51c7d1665"
+      }
     }
   }
 }
