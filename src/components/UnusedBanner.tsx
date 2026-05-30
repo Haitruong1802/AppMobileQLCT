@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'rea
 import { useState } from 'react';
 import { Icon } from './Icon';
 import { useTheme } from '../store/useTheme';
+import { useT } from '../i18n/useT';
+import { t } from '../i18n';
 import { formatNumber } from '../utils/format';
 import {
   acceptUnusedSuggestion,
@@ -19,6 +21,7 @@ type Props = {
 };
 
 export function UnusedBanner({ date, unused, primaryGoal, onHandled }: Props) {
+  useT();
   const palette = useTheme();
   const [busy, setBusy] = useState(false);
 
@@ -62,7 +65,7 @@ export function UnusedBanner({ date, unused, primaryGoal, onHandled }: Props) {
           onPress={dismiss}
           disabled={busy}
         >
-          <Text style={styles.btnDismissText}>Để dành mai</Text>
+          <Text style={styles.btnDismissText}>{t('unused.dismiss')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.btnAccept, { backgroundColor: palette.primary }]}
@@ -74,7 +77,7 @@ export function UnusedBanner({ date, unused, primaryGoal, onHandled }: Props) {
           ) : (
             <>
               <Icon name="Check" size={16} color="#fff" />
-              <Text style={styles.btnAcceptText}>Đồng ý</Text>
+              <Text style={styles.btnAcceptText}>{t('unused.accept')}</Text>
             </>
           )}
         </TouchableOpacity>

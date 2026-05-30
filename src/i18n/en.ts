@@ -131,6 +131,16 @@ export const en = {
   'savings.headTitle': 'Auto savings',
   'cooldown.title': 'This is larger than your usual',
   'cooldown.cancelText': 'Cancel entry',
+  'common.unpaidBills': 'Unpaid bills',
+  'common.remaining': 'Remaining',
+  'common.high': 'High',
+  'common.later': 'Later',
+  'common.pet': 'Pet',
+  'premium.allFree': 'All features are free',
+  'premium.proLabel': 'Pro',
+  'premium.currentPlan': 'Current plan',
+  'unused.dismiss': 'Save for tomorrow',
+  'unused.accept': 'OK',
 
   // ── Calendar ──
   'calendar.title': 'Calendar',

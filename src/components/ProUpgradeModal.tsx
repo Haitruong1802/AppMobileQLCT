@@ -3,6 +3,7 @@
 import { Modal, View, Text, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Icon } from './Icon';
+import { t } from '../i18n';
 
 interface Props {
   visible: boolean;
@@ -115,7 +116,7 @@ export function ProUpgradeModal({ visible, onClose, feature }: Props) {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.laterBtn} onPress={onClose} activeOpacity={0.7}>
-            <Text style={styles.laterText}>Để sau</Text>
+            <Text style={styles.laterText}>{t('common.later')}</Text>
           </TouchableOpacity>
         </Pressable>
       </Pressable>

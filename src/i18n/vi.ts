@@ -131,6 +131,16 @@ export const vi = {
   'savings.headTitle': 'Tự động tiết kiệm',
   'cooldown.title': 'Khoản này hơi lớn so với thường ngày',
   'cooldown.cancelText': 'Huỷ ghi',
+  'common.unpaidBills': 'Hoá đơn chưa trả',
+  'common.remaining': 'Còn lại',
+  'common.high': 'Nhiều',
+  'common.later': 'Để sau',
+  'common.pet': 'Pet',
+  'premium.allFree': 'Tất cả tính năng đang miễn phí',
+  'premium.proLabel': 'Pro',
+  'premium.currentPlan': 'Gói hiện tại',
+  'unused.dismiss': 'Để dành mai',
+  'unused.accept': 'Đồng ý',
 
   // ── Tab Lịch ──
   'calendar.title': 'Lịch',

@@ -4,6 +4,7 @@
 import { ReactNode } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from './Icon';
+import { t } from '../i18n';
 
 interface Props {
   locked: boolean;
@@ -24,7 +25,7 @@ export function ProLockedOverlay({ locked, onPress, children, badgePosition = 't
       {badgePosition === 'tr' ? (
         <View style={styles.lockPill} pointerEvents="none">
           <Icon name="Lock" size={11} color="#1f2937" strokeWidth={2.5} />
-          <Text style={styles.lockText}>Pro</Text>
+          <Text style={styles.lockText}>{t('premium.proLabel')}</Text>
         </View>
       ) : null}
       {/* Transparent tap target */}

@@ -2,6 +2,7 @@
 import { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useTheme } from '../store/useTheme';
+import { t } from '../i18n';
 
 interface Props {
   year: number;
@@ -89,7 +90,7 @@ export function YearHeatmap({ year, data, onCellPress }: Props) {
             ]}
           />
         ))}
-        <Text style={styles.legendText}>Nhiều</Text>
+        <Text style={styles.legendText}>{t('common.high')}</Text>
       </View>
     </View>
   );

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated, Easing } from 'react-native';
 import { useRouter } from 'expo-router';
 import { StreakState } from '../services/streak';
+import { t } from '../i18n';
 
 type Props = {
   streak: StreakState;
@@ -82,7 +83,7 @@ export function StreakBadge({ streak }: Props) {
         {burstActive ? <FlameBurst p1={p1} p2={p2} p3={p3} /> : null}
       </View>
       {isNewUser ? (
-        <Text style={[styles.num, { color: '#6b7280' }]}>Pet</Text>
+        <Text style={[styles.num, { color: '#6b7280' }]}>{t('common.pet')}</Text>
       ) : (
         <Text style={[styles.num, { color }]}>{display}</Text>
       )}

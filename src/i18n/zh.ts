@@ -131,6 +131,16 @@ export const zh = {
   'savings.headTitle': '自动储蓄',
   'cooldown.title': '此笔超出日常水平',
   'cooldown.cancelText': '取消记录',
+  'common.unpaidBills': '未付账单',
+  'common.remaining': '剩余',
+  'common.high': '高',
+  'common.later': '稍后',
+  'common.pet': '宠物',
+  'premium.allFree': '所有功能免费',
+  'premium.proLabel': 'Pro',
+  'premium.currentPlan': '当前套餐',
+  'unused.dismiss': '留到明天',
+  'unused.accept': '同意',
 
   // ── Calendar ──
   'calendar.title': '日历',

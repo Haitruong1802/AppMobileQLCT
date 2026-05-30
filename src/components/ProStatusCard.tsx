@@ -7,6 +7,7 @@ import { usePremiumState } from '../store/usePremium';
 import { packageLabel } from '../services/premium';
 import { formatDate } from '../utils/date';
 import { ProBadge } from './ProBadge';
+import { t } from '../i18n';
 
 interface Props {
   /** Compact = chiều cao thấp, không show benefits list. */
@@ -30,7 +31,7 @@ export function ProStatusCard({ compact = false }: Props) {
             <Icon name="Crown" size={20} color="#fbbf24" strokeWidth={2.5} />
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={styles.freeAccessTitle}>Tất cả tính năng đang miễn phí</Text>
+            <Text style={styles.freeAccessTitle}>{t('premium.allFree')}</Text>
             <Text style={styles.freeAccessSub}>
               Bản phát hành sớm, cảm ơn bạn đã đồng hành cùng Bux2.
             </Text>
@@ -93,7 +94,7 @@ export function ProStatusCard({ compact = false }: Props) {
           <Icon name="Crown" size={14} color="#fbbf24" strokeWidth={2.5} />
         </View>
         <Text style={styles.proPillText}>
-          <Text style={styles.proPillStrong}>Pro</Text>
+          <Text style={styles.proPillStrong}>{t('premium.proLabel')}</Text>
           <Text style={styles.proPillSep}>  ·  </Text>
           {packageLabel(state.package)}
           <Text style={styles.proPillSep}>  ·  </Text>
@@ -126,17 +127,17 @@ export function ProStatusCard({ compact = false }: Props) {
       </View>
       <View style={styles.proMeta}>
         <View style={styles.proMetaRow}>
-          <Text style={styles.proMetaLabel}>Gói hiện tại</Text>
+          <Text style={styles.proMetaLabel}>{t('premium.currentPlan')}</Text>
           <Text style={styles.proMetaValue}>{packageLabel(state.package)}</Text>
         </View>
         {state.isLifetime ? (
           <View style={styles.proMetaRow}>
-            <Text style={styles.proMetaLabel}>Thời hạn</Text>
-            <Text style={styles.proMetaValue}>Trọn đời</Text>
+            <Text style={styles.proMetaLabel}>{t('premium.duration')}</Text>
+            <Text style={styles.proMetaValue}>{t('premium.lifetime')}</Text>
           </View>
         ) : state.expiresAt ? (
           <View style={styles.proMetaRow}>
-            <Text style={styles.proMetaLabel}>Hết hạn</Text>
+            <Text style={styles.proMetaLabel}>{t('premium.expires')}</Text>
             <Text style={styles.proMetaValue}>
               {formatDate(state.expiresAt, 'dd/MM/yyyy')}
               {state.daysLeft !== null && state.daysLeft >= 0 ? ` · còn ${state.daysLeft} ngày` : ''}

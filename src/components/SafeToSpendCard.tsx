@@ -189,14 +189,14 @@ export function SafeToSpendCard({
           </View>
           {data.pendingBills > 0 ? (
             <View style={styles.detailRow}>
-              <Text style={styles.detailLabel}>Hoá đơn chưa trả</Text>
+              <Text style={styles.detailLabel}>{t('common.unpaidBills')}</Text>
               <Text style={[styles.detailValue, { color: '#9a3412' }]}>
                 −{formatNumber(data.pendingBills)}đ
               </Text>
             </View>
           ) : null}
           <View style={[styles.detailRow, styles.totalRow]}>
-            <Text style={styles.detailTotalLabel}>Còn lại</Text>
+            <Text style={styles.detailTotalLabel}>{t('common.remaining')}</Text>
             <Text style={styles.detailTotalValue}>
               {formatNumber(data.remainingBudget)}đ
             </Text>
