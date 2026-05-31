@@ -105,7 +105,7 @@ export default function Insights() {
     setReport(null);
 
     if (ctx.totalExpense === 0 && ctx.totalIncome === 0) {
-      setError('Chưa có giao dịch tháng này. Vào tab Nhập vào ghi vài giao dịch rồi quay lại.');
+      setError(t('insights.errEmpty'));
       setLoading(false);
       return;
     }
@@ -115,7 +115,7 @@ export default function Insights() {
       const r = generateLocalReport(ctx);
       setReport(r);
     } catch (e: any) {
-      setError(e?.message || 'Không tạo được báo cáo');
+      setError(e?.message || t('insights.errGenerate'));
     } finally {
       setLoading(false);
     }
@@ -142,7 +142,7 @@ export default function Insights() {
           </View>
           <Text style={styles.headerTitle}>{formatMonth(currentMonth)}</Text>
           <Text style={styles.headerSub}>
-            {formatNumber(ctx.totalExpense)}đ chi · {formatNumber(ctx.totalIncome)}đ thu · {ctx.txCount} giao dịch
+            {t('insights.headerSub', { expense: formatNumber(ctx.totalExpense), income: formatNumber(ctx.totalIncome), n: ctx.txCount })}
           </Text>
         </View>
 
@@ -245,9 +245,7 @@ export default function Insights() {
           </View>
         ) : null}
 
-        <Text style={styles.footnote}>
-          Báo cáo tạo từ dữ liệu giao dịch tháng này, chạy trên máy bạn, không gửi cloud.
-        </Text>
+        <Text style={styles.footnote}>{t('insights.footnote')}</Text>
       </ScrollView>
     </SafeAreaView>
   );
