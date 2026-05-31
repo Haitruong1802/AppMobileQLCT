@@ -21,6 +21,16 @@ import { t } from '../../src/i18n';
 import { ProUpgradeModal } from '../../src/components/ProUpgradeModal';
 import { notify } from '../../src/utils/notify';
 
+function paletteLabel(p: Palette): string {
+  const v = t(`theme.label.${p.key}`);
+  return v === `theme.label.${p.key}` ? p.label : v;
+}
+
+function paletteDesc(p: Palette): string {
+  const v = t(`theme.desc.${p.key}`);
+  return v === `theme.desc.${p.key}` ? p.description : v;
+}
+
 export default function ThemeScreen() {
   const router = useRouter();
   const settings = useStore((s) => s.settings);
@@ -43,7 +53,7 @@ export default function ThemeScreen() {
     if (p.key === currentKey) return;
     try {
       await updateSetting('theme', p.key);
-      notify(t('theme.switchedTo', { name: p.label }), 'success');
+      notify(t('theme.switchedTo', { name: paletteLabel(p) }), 'success');
     } catch {
       notify(t('err.themeChangeFailed'), 'error');
     }
@@ -65,9 +75,7 @@ export default function ThemeScreen() {
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <Text style={styles.heading}>{t('theme.subtitle')}</Text>
-        <Text style={styles.subheading}>
-          Chọn bảng màu phù hợp với phong cách của bạn. Theme cao cấp dành cho gói Pro.
-        </Text>
+        <Text style={styles.subheading}>{t('theme.subhint')}</Text>
 
         {/* Free section */}
         <Text style={styles.sectionLabel}>{t('theme.basic')}</Text>
@@ -157,7 +165,7 @@ function ThemeRow({
       <ThemePreview palette={palette} isLocked={isLocked} />
       <View style={{ flex: 1 }}>
         <View style={styles.nameRow}>
-          <Text style={[styles.name, isLocked && { color: '#6b7280' }]}>{palette.label}</Text>
+          <Text style={[styles.name, isLocked && { color: '#6b7280' }]}>{paletteLabel(palette)}</Text>
           {palette.isPremium ? (
             <View style={styles.premiumChip}>
               <Icon name="Crown" size={10} color="#92400e" strokeWidth={2.5} />
@@ -166,7 +174,7 @@ function ThemeRow({
           ) : null}
         </View>
         <Text style={styles.desc} numberOfLines={2}>
-          {palette.description}
+          {paletteDesc(palette)}
         </Text>
       </View>
       {isActive ? (
