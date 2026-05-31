@@ -12,6 +12,7 @@ import { Icon } from './Icon';
 import { useAuth } from '../store/useAuth';
 import { useTheme } from '../store/useTheme';
 import { isBiometricEnabled, canUseBiometric, getPinLength } from '../services/lock';
+import { t } from '../i18n';
 
 const MAX_PIN_LENGTH = 6;
 
@@ -98,11 +99,11 @@ export function LockScreen() {
           <View style={[styles.lockIconBox, { backgroundColor: palette.primaryLight }]}>
             <Icon name="Lock" size={40} color={palette.primary} />
           </View>
-          <Text style={styles.title}>Mở khoá Bux2</Text>
+          <Text style={styles.title}>{t('lock.title')}</Text>
           <Text style={styles.subtitle}>
             {inLockout
-              ? `Khoá ${lockoutCountdown}s do nhập sai 5 lần`
-              : 'Nhập mã PIN'}
+              ? t('lock.lockedFor', { sec: lockoutCountdown })
+              : t('lock.enterPin')}
           </Text>
 
           {/* PIN dots — đúng độ dài PIN đã set */}
@@ -119,7 +120,7 @@ export function LockScreen() {
           </View>
 
           {failedAttempts > 0 && !inLockout ? (
-            <Text style={styles.warn}>Sai PIN. Còn {5 - failedAttempts} lần thử</Text>
+            <Text style={styles.warn}>{t('lock.wrongPin', { left: 5 - failedAttempts })}</Text>
           ) : null}
 
           {/* Number pad */}
