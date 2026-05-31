@@ -263,16 +263,16 @@ export default function BudgetWizard() {
       <View style={styles.progressOuter}>
         <View style={[styles.progressInner, { width: `${(step / 4) * 100}%`, backgroundColor: palette.primary }]} />
       </View>
-      <Text style={[styles.stepLabel, { color: palette.primary }]}>Bước {step}/4</Text>
+      <Text style={[styles.stepLabel, { color: palette.primary }]}>{t('wizard.stepLabel', { step })}</Text>
 
       <ScrollView contentContainerStyle={styles.container}>
         {/* ============ STEP 1: Thu nhập ============ */}
         {step === 1 ? (
           <>
-            <Text style={styles.stepTitle}>Thu nhập tháng của bạn?</Text>
-            <Text style={styles.stepHint}>Bux2 đã tự lấy từ giao dịch thu trước. Bạn chỉnh nếu cần.</Text>
+            <Text style={styles.stepTitle}>{t('wizard.step1Title')}</Text>
+            <Text style={styles.stepHint}>{t('wizard.step1Hint')}</Text>
 
-            <Text style={styles.label}>LƯƠNG CỨNG</Text>
+            <Text style={styles.label}>{t('wizard.salaryLabel')}</Text>
             <View style={styles.inputBox}>
               <TextInput
                 style={styles.input}
@@ -285,7 +285,7 @@ export default function BudgetWizard() {
               <Text style={styles.currency}>đ</Text>
             </View>
 
-            <Text style={styles.label}>THƯỞNG / THU KHÁC (tuỳ chọn)</Text>
+            <Text style={styles.label}>{t('wizard.bonusLabel')}</Text>
             <View style={styles.inputBox}>
               <TextInput
                 style={styles.input}
@@ -313,25 +313,19 @@ export default function BudgetWizard() {
         {step === 2 ? (
           <>
             <Text style={styles.stepTitle}>{t('wizard.fixedTitle')}</Text>
-            <Text style={styles.stepHint}>
-              Khoản phải trả mỗi tháng (tiền nhà, internet, gói data...). Bux2 tự lấy từ giao dịch lặp +
-              hoá đơn. Bạn có thể thêm thủ công.
-            </Text>
+            <Text style={styles.stepHint}>{t('wizard.fixedHint')}</Text>
 
             {fixedExpenses.length === 0 ? (
               <View style={styles.emptyBox}>
                 <Icon name="AlertCircle" size={20} color={SEMANTIC.warning.fg} />
-                <Text style={styles.emptyText}>
-                  Chưa có khoản cố định nào. Thêm Tiền nhà / Internet / Gói data bằng form bên
-                  dưới nếu có.
-                </Text>
+                <Text style={styles.emptyText}>{t('wizard.fixedEmpty')}</Text>
               </View>
             ) : (
               fixedExpenses.map((f) => (
                 <View key={f.id} style={styles.fixRow}>
                   <View style={{ flex: 1 }}>
                     <Text style={styles.fixName}>{f.name}</Text>
-                    <Text style={styles.fixAmount}>{formatNumber(f.amount)}đ / tháng</Text>
+                    <Text style={styles.fixAmount}>{t('wizard.amtPerMonth', { amount: formatNumber(f.amount) })}</Text>
                   </View>
                   <TouchableOpacity onPress={() => removeFixed(f.id)} style={styles.fixRemove}>
                     <Icon name="X" size={16} color={GRAY[500]} />
@@ -341,7 +335,7 @@ export default function BudgetWizard() {
             )}
 
             {/* Form add custom fixed */}
-            <Text style={[styles.label, { marginTop: SPACING.lg }]}>+ THÊM KHOẢN CỐ ĐỊNH</Text>
+            <Text style={[styles.label, { marginTop: SPACING.lg }]}>{t('wizard.addFixedHeader')}</Text>
 
             <Text style={styles.subLabel}>{t('wizard.categoryLabel')}</Text>
             <ScrollView
@@ -374,7 +368,7 @@ export default function BudgetWizard() {
               })}
             </ScrollView>
 
-            <Text style={styles.subLabel}>Số tiền/tháng</Text>
+            <Text style={styles.subLabel}>{t('wizard.amountPerMonthLabel')}</Text>
             <View style={styles.inputBox}>
               <TextInput
                 style={styles.input}
@@ -403,7 +397,7 @@ export default function BudgetWizard() {
             </View>
 
             <View style={styles.sumBox}>
-              <Text style={styles.sumLabel}>Còn lại (thu - cố định)</Text>
+              <Text style={styles.sumLabel}>{t('wizard.remaining')}</Text>
               <Text style={[styles.sumValue, { color: palette.primary }]}>
                 {formatNumber(Math.max(0, totalIncome - totalFixed))}đ
               </Text>
@@ -414,8 +408,8 @@ export default function BudgetWizard() {
         {/* ============ STEP 3: Mục tiêu tiết kiệm ============ */}
         {step === 3 ? (
           <>
-            <Text style={styles.stepTitle}>Muốn để dành bao nhiêu?</Text>
-            <Text style={styles.stepHint}>Quy tắc 50/30/20 của Elizabeth Warren gợi ý 20% thu nhập.</Text>
+            <Text style={styles.stepTitle}>{t('wizard.step3Title')}</Text>
+            <Text style={styles.stepHint}>{t('wizard.step3Hint')}</Text>
 
             <View style={styles.modeRow}>
               <TouchableOpacity
@@ -423,7 +417,7 @@ export default function BudgetWizard() {
                 onPress={() => setSavingsMode('pct')}
               >
                 <Text style={[styles.modeText, savingsMode === 'pct' && { color: '#fff', fontWeight: FONT_WEIGHT.extrabold }]}>
-                  Theo %
+                  {t('wizard.modePct')}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -431,7 +425,7 @@ export default function BudgetWizard() {
                 onPress={() => setSavingsMode('custom')}
               >
                 <Text style={[styles.modeText, savingsMode === 'custom' && { color: '#fff', fontWeight: FONT_WEIGHT.extrabold }]}>
-                  Số cụ thể
+                  {t('wizard.modeCustom')}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -473,10 +467,10 @@ export default function BudgetWizard() {
             )}
 
             <View style={styles.sumBox}>
-              <Text style={styles.sumLabel}>= {formatNumber(savingsTarget)}đ/tháng</Text>
+              <Text style={styles.sumLabel}>{t('wizard.eqPerMonth', { amount: formatNumber(savingsTarget) })}</Text>
               <Text style={[styles.sumValue, { color: palette.primary, fontSize: FONT_SIZE.body }]}>
                 {totalIncome > 0
-                  ? `${Math.round((savingsTarget / totalIncome) * 100)}% thu nhập`
+                  ? t('wizard.pctOfIncome', { pct: Math.round((savingsTarget / totalIncome) * 100) })
                   : ''}
               </Text>
             </View>
@@ -484,9 +478,7 @@ export default function BudgetWizard() {
             {savingsTarget + totalFixed > totalIncome ? (
               <View style={styles.warnBox}>
                 <Icon name="AlertTriangle" size={16} color={SEMANTIC.danger.fg} />
-                <Text style={styles.warnText}>
-                  Chi cố định + tiết kiệm vượt thu nhập. Cần giảm tiết kiệm hoặc thu nhập thêm.
-                </Text>
+                <Text style={styles.warnText}>{t('wizard.warnExceedsIncome')}</Text>
               </View>
             ) : null}
           </>
@@ -496,9 +488,7 @@ export default function BudgetWizard() {
         {step === 4 && result ? (
           <>
             <Text style={styles.stepTitle}>{t('wizard.allocTitle')}</Text>
-            <Text style={styles.stepHint}>
-              Chọn 1 trong 3 quy tắc phân bổ phù hợp với bạn. Có thể chỉnh lại trong tab Ngân sách sau.
-            </Text>
+            <Text style={styles.stepHint}>{t('wizard.allocHint')}</Text>
 
             {/* v3.92 — 3 quy tắc cho user chọn */}
             <View style={styles.ruleList}>
@@ -549,9 +539,7 @@ export default function BudgetWizard() {
             {savingsMode === 'pct' && userChosenSavingsPct !== null && userChosenSavingsPct !== getBudgetRule(selectedRuleId).savingsPct ? (
               <View style={styles.savingsAdjustedNote}>
                 <Icon name="Info" size={14} color="#0891b2" />
-                <Text style={styles.savingsAdjustedText}>
-                  Tiết kiệm tự cập nhật theo quy tắc: {formatNumber(ruleSavingsTarget)}đ ({getBudgetRule(selectedRuleId).savingsPct}% thu nhập)
-                </Text>
+                <Text style={styles.savingsAdjustedText}>{t('wizard.savingsAdjusted', { amount: formatNumber(ruleSavingsTarget), pct: getBudgetRule(selectedRuleId).savingsPct })}</Text>
               </View>
             ) : null}
 
@@ -565,7 +553,7 @@ export default function BudgetWizard() {
             {/* Cố định */}
             {result.items.filter((i) => i.isFixed).length > 0 ? (
               <>
-                <Text style={[styles.groupHeader, { color: GRAY[600] }]}>CHI CỐ ĐỊNH</Text>
+                <Text style={[styles.groupHeader, { color: GRAY[600] }]}>{t('wizard.groupFixed')}</Text>
                 {result.items.filter((i) => i.isFixed).map((i) => (
                   <BudgetItem key={`f-${i.categoryId}`} item={i} palette={palette} />
                 ))}
@@ -575,9 +563,7 @@ export default function BudgetWizard() {
             {/* Needs */}
             {result.items.filter((i) => i.group === 'needs').length > 0 ? (
               <>
-                <Text style={[styles.groupHeader, { color: '#0891b2' }]}>
-                  THIẾT YẾU (~{getBudgetRule(selectedRuleId).needsPct}%)
-                </Text>
+                <Text style={[styles.groupHeader, { color: '#0891b2' }]}>{t('wizard.groupNeeds', { pct: getBudgetRule(selectedRuleId).needsPct })}</Text>
                 {result.items.filter((i) => i.group === 'needs').map((i) => (
                   <BudgetItem key={`n-${i.categoryId}`} item={i} palette={palette} />
                 ))}
@@ -587,9 +573,7 @@ export default function BudgetWizard() {
             {/* Wants */}
             {result.items.filter((i) => i.group === 'wants').length > 0 ? (
               <>
-                <Text style={[styles.groupHeader, { color: '#d97706' }]}>
-                  MONG MUỐN (~{getBudgetRule(selectedRuleId).wantsPct}%)
-                </Text>
+                <Text style={[styles.groupHeader, { color: '#d97706' }]}>{t('wizard.groupWants', { pct: getBudgetRule(selectedRuleId).wantsPct })}</Text>
                 {result.items.filter((i) => i.group === 'wants').map((i) => (
                   <BudgetItem key={`w-${i.categoryId}`} item={i} palette={palette} />
                 ))}
@@ -599,7 +583,7 @@ export default function BudgetWizard() {
             {/* Savings summary */}
             <View style={[styles.sumBox, { backgroundColor: palette.primaryLight, borderColor: palette.primary + '40' }]}>
               <Text style={[styles.sumLabel, { color: palette.primary, fontWeight: FONT_WEIGHT.bold }]}>
-                💰 Tiết kiệm
+                {t('wizard.savingsLabel')}
               </Text>
               <Text style={[styles.sumValue, { color: palette.primary }]}>
                 {formatNumber(result.savingsTarget)}đ
@@ -621,7 +605,7 @@ export default function BudgetWizard() {
                 onPress={next}
                 disabled={nextDisabled}
               >
-                <Text style={styles.nextText}>Tiếp tục →</Text>
+                <Text style={styles.nextText}>{t('wizard.nextBtn')}</Text>
               </TouchableOpacity>
             );
           })()
@@ -637,7 +621,7 @@ export default function BudgetWizard() {
             {applying ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Text style={styles.nextText}>Áp dụng vào ngân sách ✓</Text>
+              <Text style={styles.nextText}>{t('wizard.applyBtn')}</Text>
             )}
           </TouchableOpacity>
         )}
