@@ -124,35 +124,36 @@ export type PetTaskContext = {
   wizardAppliedThisMonth: boolean;
 };
 
-/** Daily/recurring tasks để kiếm "điểm trưởng thành" — gamification light. */
+/** Daily/recurring tasks để kiếm "điểm trưởng thành" — gamification light.
+ *  Label dùng i18n key — UI tự resolve qua t() để follow locale. */
 export const PET_TASKS: PetTask[] = [
   {
     id: 'tx-today',
-    label: 'Ghi 1 giao dịch hôm nay',
+    label: 'streak.task.txToday',
     points: 1,
     isDone: (c) => c.hasTxToday,
   },
   {
     id: 'income-month',
-    label: 'Ghi thu nhập tháng này',
+    label: 'streak.task.incomeMonth',
     points: 2,
     isDone: (c) => c.hasIncomeThisMonth,
   },
   {
     id: 'wizard-month',
-    label: 'Lập ngân sách tháng (Budget Wizard)',
+    label: 'streak.task.wizardMonth',
     points: 3,
     isDone: (c) => c.wizardAppliedThisMonth,
   },
   {
     id: 'streak-7',
-    label: 'Đạt chuỗi 7 ngày',
+    label: 'streak.task.streak7',
     points: 5,
     isDone: (c) => c.streak >= 7,
   },
   {
     id: 'goal-complete',
-    label: 'Hoàn thành 1 mục tiêu tiết kiệm',
+    label: 'streak.task.goalComplete',
     points: 10,
     isDone: (c) => c.goalsCompleted >= 1,
   },

@@ -172,7 +172,7 @@ export default function StreakScreen() {
                 />
               </View>
               <Text style={styles.petProgressLabel}>
-                {display} / {stageProgress.next} ngày
+                {t('streak.daysProgress', { current: display, next: stageProgress.next })}
               </Text>
             </View>
           ) : (
@@ -187,7 +187,7 @@ export default function StreakScreen() {
                 />
               </View>
               <Text style={styles.petProgressLabel}>
-                ✨ Kỷ lục {streak?.longestStreak ?? 0} ngày, đỉnh cao!
+                {t('streak.recordPeak', { days: streak?.longestStreak ?? 0 })}
               </Text>
             </View>
           )}
@@ -195,7 +195,7 @@ export default function StreakScreen() {
 
         {/* Daily tasks */}
         <Text style={styles.sectionLabel}>
-          Nuôi {settings.pet_name || 'pet'} · {maturity.earned}/{maturity.available} điểm
+          {t('streak.feedSection', { name: settings.pet_name || 'pet', earned: maturity.earned, available: maturity.available })}
         </Text>
         <View style={styles.tasksList}>
           {PET_TASKS.map((task) => {
@@ -212,9 +212,9 @@ export default function StreakScreen() {
                   <Text
                     style={[styles.taskLabel, done && { color: petStage.color, fontWeight: '700' }]}
                   >
-                    {task.label}
+                    {t(task.label)}
                   </Text>
-                  <Text style={styles.taskPoints}>+{task.points} điểm trưởng thành</Text>
+                  <Text style={styles.taskPoints}>{t('streak.maturityPoints', { points: task.points })}</Text>
                 </View>
               </View>
             );
@@ -257,7 +257,7 @@ export default function StreakScreen() {
         {!activeInWeek.has(today) ? (
           <View style={styles.tipBox}>
             <Text style={styles.tipText}>
-              Hôm nay chưa ghi giao dịch. Vào ghi để giữ chuỗi.
+              {t('streak.tipNoTxToday')}
             </Text>
           </View>
         ) : null}
@@ -266,15 +266,15 @@ export default function StreakScreen() {
         {(streak?.freezePasses ?? 0) > 0 ? (
           <View style={[styles.tipBox, { backgroundColor: '#dbeafe', borderColor: '#93c5fd' }]}>
             <Text style={[styles.tipText, { color: '#1e3a8a' }]}>
-              🛡️ Còn {streak?.freezePasses ?? 0} Freeze Pass — lỡ 1 ngày app tự bảo vệ chuỗi
+              {t('streak.freezeHint', { count: streak?.freezePasses ?? 0 })}
             </Text>
           </View>
         ) : null}
 
         {/* Stats */}
         <View style={styles.statsRow}>
-          <StatBox label="Hiện tại" value={streak?.currentStreak ?? 0} align="center" />
-          <StatBox label="Kỷ lục" value={streak?.longestStreak ?? 0} align="center" />
+          <StatBox label={t('streak.currentLabel')} value={streak?.currentStreak ?? 0} align="center" />
+          <StatBox label={t('streak.recordLabel')} value={streak?.longestStreak ?? 0} align="center" />
         </View>
       </ScrollView>
 
