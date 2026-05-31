@@ -115,16 +115,7 @@ export default function SummaryToday() {
   }
 
   const todayLabel = useMemo(() => {
-    try {
-      return new Date().toLocaleDateString('vi-VN', {
-        weekday: 'long',
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      });
-    } catch {
-      return formatDate(today, 'dd/MM/yyyy');
-    }
+    return formatDate(today, 'EEEE, dd/MM/yyyy');
   }, [today]);
 
   // Subscribe để re-render khi transactions thay đổi (sau khi user thêm/sửa từ tab khác)
