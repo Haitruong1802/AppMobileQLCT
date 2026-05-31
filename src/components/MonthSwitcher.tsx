@@ -78,7 +78,7 @@ export function MonthSwitcher() {
         <Text style={styles.label}>{fmtMonthYear(currentMonth)}</Text>
         {!isThisMonth ? (
           <Text style={[styles.todayLink, { color: palette.primary }]} onPress={goToday}>
-            Về tháng này
+            {t('calendar.backToThisMonth')}
           </Text>
         ) : null}
       </TouchableOpacity>

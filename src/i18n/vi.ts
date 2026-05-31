@@ -186,6 +186,7 @@ export const vi = {
   'settings.toastBackupOk': 'Đã tạo file sao lưu ({kb} KB)',
   'settings.toastRestoreOk': 'Đã khôi phục {n} bản ghi',
   'settings.toastExportOk': 'Đã xuất {n} giao dịch ({range})',
+  'calendar.backToThisMonth': 'Về tháng này',
   'settings.lifetime': 'trọn đời',
   'settings.daysLeft': 'còn {days} ngày',
   'settings.freeUpgradeHint': 'Đang dùng Free · Nâng cấp để mở khoá tính năng cao cấp',

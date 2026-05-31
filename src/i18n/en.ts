@@ -186,6 +186,7 @@ export const en = {
   'settings.toastBackupOk': 'Backup file created ({kb} KB)',
   'settings.toastRestoreOk': 'Restored {n} records',
   'settings.toastExportOk': 'Exported {n} transactions ({range})',
+  'calendar.backToThisMonth': 'Back to this month',
   'settings.lifetime': 'lifetime',
   'settings.daysLeft': '{days} days left',
   'settings.freeUpgradeHint': 'On Free plan · Upgrade to unlock premium features',

@@ -186,6 +186,7 @@ export const zh = {
   'settings.toastBackupOk': '已创建备份文件（{kb} KB）',
   'settings.toastRestoreOk': '已恢复 {n} 条记录',
   'settings.toastExportOk': '已导出 {n} 笔交易（{range}）',
+  'calendar.backToThisMonth': '回到本月',
   'settings.lifetime': '终身',
   'settings.daysLeft': '剩 {days} 天',
   'settings.freeUpgradeHint': '当前为免费版 · 升级解锁高级功能',
