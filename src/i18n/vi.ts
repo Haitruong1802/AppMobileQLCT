@@ -328,6 +328,8 @@ export const vi = {
   'goals.deadlineShort': 'Hạn',
   'goals.iconLabel': 'Biểu tượng',
   'goals.colorLabel': 'Màu',
+  'goals.deadlineDisplay': 'Đến {date}',
+  'goals.progressLabel': '{pct}% · còn {remain}đ',
   'summary.today.title': 'Tóm tắt hôm nay',
   'summary.today.sub': 'Tổng quan nhanh tình hình thu chi trong ngày.',
   'summary.today.income': 'Thu hôm nay',

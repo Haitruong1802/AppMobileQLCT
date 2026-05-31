@@ -350,6 +350,8 @@ export const en = {
   'goals.deadlineShort': 'Deadline',
   'goals.iconLabel': 'Icon',
   'goals.colorLabel': 'Color',
+  'goals.deadlineDisplay': 'By {date}',
+  'goals.progressLabel': '{pct}% · {remain}đ left',
   'summary.today.title': "Today's summary",
   'summary.today.sub': "Quick overview of today's cash flow.",
   'summary.today.income': "Today's income",

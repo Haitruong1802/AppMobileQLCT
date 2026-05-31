@@ -350,6 +350,8 @@ export const zh = {
   'goals.deadlineShort': '截止',
   'goals.iconLabel': '图标',
   'goals.colorLabel': '颜色',
+  'goals.deadlineDisplay': '截至 {date}',
+  'goals.progressLabel': '{pct}% · 还差 {remain}đ',
   'summary.today.title': '今日总结',
   'summary.today.sub': '今日收支概览。',
   'summary.today.income': '今日收入',

@@ -19,6 +19,7 @@ import { Icon } from '../../src/components/Icon';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
 import { t } from '../../src/i18n';
+import { displayGoalName } from '../../src/i18n/goalName';
 import { formatNumber } from '../../src/utils/format';
 import { formatDate, todayISO } from '../../src/utils/date';
 import {
@@ -216,10 +217,10 @@ export default function Goals() {
                     <Icon name={g.icon} size={24} color={g.color} />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text style={styles.goalName} numberOfLines={1}>{g.name}</Text>
+                    <Text style={styles.goalName} numberOfLines={1}>{displayGoalName(g)}</Text>
                     {g.deadline ? (
                       <Text style={styles.goalDeadline}>
-                        Đến {formatDate(g.deadline, 'dd/MM/yyyy')}
+                        {t('goals.deadlineDisplay', { date: formatDate(g.deadline, 'dd/MM/yyyy') })}
                       </Text>
                     ) : null}
                   </View>
@@ -246,7 +247,7 @@ export default function Goals() {
                   />
                 </View>
                 <Text style={styles.progressLabel}>
-                  {pct.toFixed(0)}% · còn {formatNumber(Math.max(0, g.target - g.current))}đ
+                  {t('goals.progressLabel', { pct: pct.toFixed(0), remain: formatNumber(Math.max(0, g.target - g.current)) })}
                 </Text>
 
                 {!completed ? (
