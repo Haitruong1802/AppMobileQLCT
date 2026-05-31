@@ -234,6 +234,7 @@ export const en = {
   'notif.budget.most': 'Most of budget used',
   'notif.budget.body': 'Tap to view details and adjust.',
   'books.title': 'Accounting books',
+  'books.default': 'Personal book',
   'books.intro': 'Each book is a separate space (wallets, transactions, budgets, goals...). Use it to split Personal / Family / Shop / Project...',
   'books.defaultTag': 'default',
   'books.currentUsing': 'In use',

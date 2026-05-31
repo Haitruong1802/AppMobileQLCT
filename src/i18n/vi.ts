@@ -670,6 +670,7 @@ export const vi = {
 
   // ── Books (multi-ledger) ──
   'books.title': 'Sổ kế toán',
+  'books.default': 'Sổ Cá nhân',
   'books.intro': 'Mỗi sổ là 1 không gian riêng (ví, giao dịch, ngân sách, mục tiêu...). Dùng để tách Cá nhân / Gia đình / Cửa hàng / Dự án...',
   'books.defaultTag': 'mặc định',
   'books.currentUsing': 'Đang sử dụng',

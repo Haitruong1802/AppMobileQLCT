@@ -234,6 +234,7 @@ export const zh = {
   'notif.budget.most': '已使用大部分预算',
   'notif.budget.body': '点击查看详情并调整。',
   'books.title': '账本',
+  'books.default': '个人账本',
   'books.intro': '每个账本是独立的空间（钱包、交易、预算、目标...）。可用于区分 个人 / 家庭 / 店铺 / 项目...',
   'books.defaultTag': '默认',
   'books.currentUsing': '正在使用',

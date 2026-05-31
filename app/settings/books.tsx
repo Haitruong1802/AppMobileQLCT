@@ -18,6 +18,7 @@ import { Icon, ICONS } from '../../src/components/Icon';
 import { useStore } from '../../src/store/useStore';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
+import { displayBookName } from '../../src/i18n/bookName';
 import { Book } from '../../src/db';
 import { canCreate } from '../../src/services/premium';
 import { usePremiumTier } from '../../src/store/usePremium';
@@ -89,7 +90,7 @@ export default function BooksManage() {
   async function doSwitch(b: Book) {
     if (b.id === currentBookId) return;
     await setCurrentBookId(b.id);
-    notify(t('books.switched', { name: b.name }));
+    notify(t('books.switched', { name: displayBookName(b) }));
   }
 
   async function doDelete(b: Book) {
@@ -97,12 +98,13 @@ export default function BooksManage() {
       notify(t('books.err.cantDeleteDefault'));
       return;
     }
+    const bookName = displayBookName(b);
     const confirmed =
       Platform.OS === 'web'
-        ? confirm(t('books.confirmDeleteWeb', { name: b.name }))
+        ? confirm(t('books.confirmDeleteWeb', { name: bookName }))
         : await new Promise<boolean>((resolve) => {
             Alert.alert(
-              t('books.confirmDeleteTitle', { name: b.name }),
+              t('books.confirmDeleteTitle', { name: bookName }),
               t('books.confirmDeleteMsg'),
               [
                 { text: t('common.cancel'), onPress: () => resolve(false) },
@@ -148,7 +150,7 @@ export default function BooksManage() {
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.bookName} numberOfLines={1}>
-                  {b.name}
+                  {displayBookName(b)}
                   {b.is_default === 1 ? <Text style={styles.bookSub}> · {t('books.defaultTag')}</Text> : null}
                 </Text>
                 {isActive ? (
