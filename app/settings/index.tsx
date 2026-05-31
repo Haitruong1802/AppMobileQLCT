@@ -87,7 +87,7 @@ export default function Settings() {
         }
         throw shareErr;
       }
-      notify(`Đã tạo file sao lưu (${Math.round(bytes / 1024)} KB)`, 'success');
+      notify(t('settings.toastBackupOk', { kb: Math.round(bytes / 1024) }), 'success');
     } catch (e: any) {
       // v3.130 — Hiện error chi tiết để debug
       const msg = String(e?.message || e || 'unknown');
@@ -176,7 +176,7 @@ export default function Settings() {
           loadWallets(),
           loadBooks(),
         ]);
-        notify(`Đã khôi phục ${total} bản ghi`, 'success');
+        notify(t('settings.toastRestoreOk', { n: total }), 'success');
       } catch {
         notify(t('err.restoreFailed'), 'error');
       }
@@ -210,7 +210,7 @@ export default function Settings() {
       }
       try {
         await shareFile(uri, 'text/csv', fileName);
-        notify(`Đã xuất ${rows} giao dịch (${rangeName.toLowerCase()})`, 'success');
+        notify(t('settings.toastExportOk', { n: rows, range: rangeName.toLowerCase() }), 'success');
       } catch (shareErr: any) {
         const msg = String(shareErr?.message || '');
         if (msg.toLowerCase().includes('cancel') || msg.toLowerCase().includes('dismiss')) return;

@@ -141,11 +141,11 @@ export default function EditTransaction() {
       router.back();
     };
     if (Platform.OS === 'web') {
-      if (confirm('Xoá giao dịch này?')) doDel();
+      if (confirm(t('edit.confirmDeleteTx'))) doDel();
     } else {
-      Alert.alert('Xoá', 'Xoá giao dịch này?', [
-        { text: 'Huỷ' },
-        { text: 'Xoá', style: 'destructive', onPress: doDel },
+      Alert.alert(t('common.delete'), t('edit.confirmDeleteTx'), [
+        { text: t('common.cancel') },
+        { text: t('common.delete'), style: 'destructive', onPress: doDel },
       ]);
     }
   }

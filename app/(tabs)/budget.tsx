@@ -174,11 +174,11 @@ export default function Budget() {
       setEditing(null);
     };
     if (Platform.OS === 'web') {
-      if (confirm('Xoá ngân sách danh mục này?')) doDel();
+      if (confirm(t('budget.confirmDeleteCatWeb'))) doDel();
     } else {
-      Alert.alert('Xoá ngân sách', 'Bạn muốn xoá ngân sách của danh mục này?', [
-        { text: 'Huỷ' },
-        { text: 'Xoá', style: 'destructive', onPress: doDel },
+      Alert.alert(t('budget.deleteCatTitle'), t('budget.deleteCatBody'), [
+        { text: t('common.cancel') },
+        { text: t('common.delete'), style: 'destructive', onPress: doDel },
       ]);
     }
   }

@@ -37,6 +37,7 @@ import { t } from '../../src/i18n';
 import { useLocale } from '../../src/i18n/useLocale';
 import { displayCategoryName } from '../../src/i18n/categoryName';
 import { displayWalletName } from '../../src/i18n/walletName';
+import { displayGoalName } from '../../src/i18n/goalName';
 
 export default function NhapVao() {
   const [type, setType] = useState<'expense' | 'income'>('expense');
@@ -641,9 +642,9 @@ export default function NhapVao() {
               onPress={async () => {
                 try {
                   await loadCategories();
-                  notify(`Đã tải ${useStore.getState().categories.length} danh mục`);
+                  notify(t('input.loadedCats', { n: useStore.getState().categories.length }));
                 } catch (e: any) {
-                  notify(`Lỗi: ${e?.message || 'unknown'}`);
+                  notify(t('common.errorPrefix', { msg: e?.message || 'unknown' }));
                 }
               }}
             >
@@ -718,7 +719,7 @@ export default function NhapVao() {
             await addToSavingsGoal(goalId, amount);
             if (monthReviewData) await markMonthReviewDone(monthReviewData.monthStr);
             const goal = monthReviewGoals.find((g) => g.id === goalId);
-            notify(`Đã nạp ${formatNumber(amount)}đ vào ${goal?.name ?? 'mục tiêu'}`);
+            notify(t('goals.toastAdded', { amount: formatNumber(amount), name: goal ? displayGoalName(goal) : t('goals.fundGeneral') }));
           } catch (e) {
             console.warn('[monthReview] apply fail:', e);
           } finally {
