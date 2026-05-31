@@ -330,6 +330,7 @@ export const vi = {
   'goals.colorLabel': 'Màu',
   'goals.deadlineDisplay': 'Đến {date}',
   'goals.progressLabel': '{pct}% · còn {remain}đ',
+  'goals.addToTitle': 'Cộng vào "{name}"',
   'summary.today.title': 'Tóm tắt hôm nay',
   'summary.today.sub': 'Tổng quan nhanh tình hình thu chi trong ngày.',
   'summary.today.income': 'Thu hôm nay',

@@ -386,7 +386,7 @@ export default function Goals() {
         {addingTo ? (
           <Pressable style={styles.modalBgCenter} onPress={() => setAddingTo(null)}>
             <Pressable style={styles.modalCardSmall} onPress={() => {}}>
-              <Text style={styles.modalTitle}>Cộng vào "{addingTo.goal.name}"</Text>
+              <Text style={styles.modalTitle}>{t('goals.addToTitle', { name: displayGoalName(addingTo.goal) })}</Text>
               <Text style={styles.label}>{t('goals.amountLabel')}</Text>
               <View style={styles.amountRow}>
                 <TextInput

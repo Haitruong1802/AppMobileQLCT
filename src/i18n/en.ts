@@ -352,6 +352,7 @@ export const en = {
   'goals.colorLabel': 'Color',
   'goals.deadlineDisplay': 'By {date}',
   'goals.progressLabel': '{pct}% · {remain}đ left',
+  'goals.addToTitle': 'Add to "{name}"',
   'summary.today.title': "Today's summary",
   'summary.today.sub': "Quick overview of today's cash flow.",
   'summary.today.income': "Today's income",
