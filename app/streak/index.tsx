@@ -156,7 +156,7 @@ export default function StreakScreen() {
               {settings.pet_name || t('streak.namePetCta')}
             </Text>
             <View style={[styles.stageBadge, { backgroundColor: petStage.color + '20' }]}>
-              <Text style={[styles.stageBadgeText, { color: petStage.color }]}>{petStage.name}</Text>
+              <Text style={[styles.stageBadgeText, { color: petStage.color }]}>{t(petStage.name)}</Text>
             </View>
             <Icon name="Pencil" size={14} color={petStage.color} />
           </TouchableOpacity>

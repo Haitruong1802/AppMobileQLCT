@@ -22,57 +22,58 @@ export type PetStage = {
 };
 
 // v3.71 — Dùng emoji character (animal evolution) thay vì Lucide ráp xấu
+// name/tagline lưu i18n key — UI tự resolve qua t() để follow locale.
 export const PET_STAGES: PetStage[] = [
   {
     level: 1,
     minStreak: 0,
     nextStreak: 7,
-    name: 'Hạt giống',
+    name: 'pet.stage.seed.name',
     emoji: '🥚',
     icon: 'Sparkles',
     color: '#a3e635',
-    tagline: 'Mới bắt đầu, kiên trì ghi sổ mỗi ngày nhé',
+    tagline: 'pet.stage.seed.tagline',
   },
   {
     level: 2,
     minStreak: 7,
     nextStreak: 30,
-    name: 'Bé con',
+    name: 'pet.stage.baby.name',
     emoji: '🐣',
     icon: 'Heart',
     color: '#fbbf24',
-    tagline: 'Đã quen tay rồi! Cố thêm tí nữa',
+    tagline: 'pet.stage.baby.tagline',
   },
   {
     level: 3,
     minStreak: 30,
     nextStreak: 100,
-    name: 'Tinh nghịch',
+    name: 'pet.stage.playful.name',
     emoji: '🦊',
     icon: 'Flame',
     color: '#f97316',
-    tagline: 'Tinh thần thép! Cứ đà này nhé',
+    tagline: 'pet.stage.playful.tagline',
   },
   {
     level: 4,
     minStreak: 100,
     nextStreak: 365,
-    name: 'Trưởng thành',
+    name: 'pet.stage.adult.name',
     emoji: '🐺',
     icon: 'Crown',
     color: '#a855f7',
-    tagline: 'Bậc thầy tài chính, top 1% người dùng',
+    tagline: 'pet.stage.adult.tagline',
   },
   {
     level: 5,
     minStreak: 365,
     nextStreak: null,
-    name: 'Huyền thoại',
+    name: 'pet.stage.legend.name',
     emoji: '🐉',
     icon: 'Award',
     // v3.85 — đổi từ gold #fbbf24 → red #dc2626 để pet đỏ rực rõ khác stage 2 (vàng)
     color: '#dc2626',
-    tagline: 'Huyền thoại, kỷ lục đáng nể',
+    tagline: 'pet.stage.legend.tagline',
   },
 ];
 
