@@ -138,11 +138,12 @@ export default function WalletsManage() {
       notify(t('wallets.err.cantDeleteDefault'));
       return;
     }
+    const walletName = displayWalletName(w);
     const confirmed =
       Platform.OS === 'web'
-        ? confirm(`Xoá ví "${w.name}"? Giao dịch sẽ chuyển về ví mặc định.`)
+        ? confirm(t('wallets.confirmDeleteWeb', { name: walletName }))
         : await new Promise<boolean>((resolve) => {
-            Alert.alert(t('common.delete2') + ' ví', `Xoá "${w.name}"? Tất cả giao dịch sẽ chuyển về ví mặc định.`, [
+            Alert.alert(t('wallets.confirmDeleteTitle'), t('wallets.confirmDeleteBody', { name: walletName }), [
               { text: t('common.cancel'), onPress: () => resolve(false) },
               { text: t('common.delete2'), style: 'destructive', onPress: () => resolve(true) },
             ]);
@@ -152,7 +153,7 @@ export default function WalletsManage() {
       const res = await deleteWalletAction(w.id);
       notify(res.reassigned > 0 ? t('wallets.deletedReassign', { n: res.reassigned }) : t('wallets.deleted'));
     } catch (e: any) {
-      notify(`Lỗi: ${e?.message || 'unknown'}`);
+      notify(t('common.errorPrefix', { msg: e?.message || 'unknown' }));
     }
   }
 
