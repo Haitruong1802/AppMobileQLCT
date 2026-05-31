@@ -19,6 +19,7 @@ import { todayISO, formatDate } from '../../src/utils/date';
 import { useT } from '../../src/i18n/useT';
 import { t } from '../../src/i18n';
 import { displayCategoryName } from '../../src/i18n/categoryName';
+import { displayTxNote } from '../../src/i18n/txNote';
 
 const MAX_TX_LIST = 5;
 
@@ -205,21 +206,21 @@ export default function SummaryToday() {
             </View>
           ) : (
             <View style={styles.txList}>
-              {recentTx.map((t) => {
-                const cat = categories.find((c) => c.id === t.category_id);
-                const isIncome = t.type === 'income';
-                const time = timeOf(t.created_at);
+              {recentTx.map((tx) => {
+                const cat = categories.find((c) => c.id === tx.category_id);
+                const isIncome = tx.type === 'income';
+                const time = timeOf(tx.created_at);
                 return (
-                  <View key={t.id} style={styles.txRow}>
+                  <View key={tx.id} style={styles.txRow}>
                     <View style={[styles.txIcon, { backgroundColor: (cat?.color || '#9ca3af') + '20' }]}>
                       <Icon name={cat?.icon || 'MoreHorizontal'} size={18} color={cat?.color || '#6b7280'} />
                     </View>
                     <View style={{ flex: 1 }}>
                       <Text style={styles.txName} numberOfLines={1}>
-                        {t.note?.trim() || (cat ? displayCategoryName(cat) : 'Giao dịch')}
+                        {displayTxNote(tx.note)?.trim() || (cat ? displayCategoryName(cat) : t('tx.unnamed'))}
                       </Text>
                       <Text style={styles.txMeta} numberOfLines={1}>
-                        {cat ? displayCategoryName(cat) : 'Khác'}
+                        {cat ? displayCategoryName(cat) : t('cat.default.other')}
                         {time ? ` · ${time}` : ''}
                       </Text>
                     </View>
@@ -228,7 +229,7 @@ export default function SummaryToday() {
                       numberOfLines={1}
                     >
                       {isIncome ? '+' : '-'}
-                      {formatNumber(Number(t.amount) || 0)}đ
+                      {formatNumber(Number(tx.amount) || 0)}đ
                     </Text>
                   </View>
                 );

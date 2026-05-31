@@ -26,6 +26,7 @@ import { generateLocalCoach } from '../../src/services/localInsight';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
 import { displayCategoryName } from '../../src/i18n/categoryName';
+import { displayTxNote } from '../../src/i18n/txNote';
 
 type DayBucket = {
   date: string;
@@ -420,7 +421,7 @@ export default function Calendar() {
                     <View style={{ flex: 1 }}>
                       <Text style={styles.itemName}>
                         {c ? displayCategoryName(c) : t('cat.default.other')}
-                        {tx.note ? <Text style={styles.itemNote}>  ·  {tx.note}</Text> : null}
+                        {tx.note ? <Text style={styles.itemNote}>  ·  {displayTxNote(tx.note)}</Text> : null}
                       </Text>
                     </View>
                     {/* Source badge — bill / recurring / transfer / scan */}

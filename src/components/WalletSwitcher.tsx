@@ -2,6 +2,8 @@
 import { ScrollView, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from './Icon';
 import { useStore } from '../store/useStore';
+import { t } from '../i18n';
+import { displayWalletName } from '../i18n/walletName';
 
 export function WalletSwitcher() {
   const wallets = useStore((s) => s.wallets);
@@ -25,7 +27,7 @@ export function WalletSwitcher() {
             currentWalletId === null && { color: '#111827', fontWeight: '700' },
           ]}
         >
-          Tất cả ví
+          {t('wallets.allWallets')}
         </Text>
       </TouchableOpacity>
       {wallets.map((w) => {
@@ -47,7 +49,7 @@ export function WalletSwitcher() {
               ]}
               numberOfLines={1}
             >
-              {w.name}
+              {displayWalletName(w)}
             </Text>
           </TouchableOpacity>
         );

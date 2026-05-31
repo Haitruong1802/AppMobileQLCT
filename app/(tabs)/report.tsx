@@ -13,6 +13,7 @@ import { YearHeatmap } from '../../src/components/YearHeatmap';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
 import { displayCategoryName } from '../../src/i18n/categoryName';
+import { displayTxNote } from '../../src/i18n/txNote';
 
 export default function Report() {
   const t = useT();
@@ -384,7 +385,7 @@ export default function Report() {
                   })()}
                 </Text>
                 {summary.biggest.note ? (
-                  <Text style={styles.biggestNote}>{summary.biggest.note}</Text>
+                  <Text style={styles.biggestNote}>{displayTxNote(summary.biggest.note)}</Text>
                 ) : null}
               </View>
               <Text
@@ -479,7 +480,7 @@ export default function Report() {
                     <View key={tx.id} style={styles.drillItem}>
                       <View style={{ flex: 1 }}>
                         <Text style={styles.drillItemDate}>{tx.date}</Text>
-                        {tx.note ? <Text style={styles.drillItemNote}>{tx.note}</Text> : null}
+                        {tx.note ? <Text style={styles.drillItemNote}>{displayTxNote(tx.note)}</Text> : null}
                       </View>
                       <Text
                         style={[
