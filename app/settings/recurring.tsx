@@ -135,7 +135,7 @@ export default function RecurringManage() {
       await refresh();
       setEditing(null);
     } catch (e: any) {
-      notify(`Lỗi: ${e?.message || 'unknown'}`);
+      notify(t('common.errorPrefix', { msg: e?.message || 'unknown' }));
     } finally {
       setSaving(false);
     }
@@ -149,11 +149,11 @@ export default function RecurringManage() {
   async function doDelete(r: RecurringRule) {
     const confirmed =
       Platform.OS === 'web'
-        ? confirm('Xoá quy tắc lặp này?')
+        ? confirm(t('recurring.confirmDeleteWeb'))
         : await new Promise<boolean>((resolve) => {
-            Alert.alert('Xoá', 'Xoá quy tắc lặp? Các giao dịch đã tạo vẫn giữ lại.', [
-              { text: 'Huỷ', onPress: () => resolve(false) },
-              { text: 'Xoá', style: 'destructive', onPress: () => resolve(true) },
+            Alert.alert(t('common.delete'), t('recurring.confirmDeleteNative'), [
+              { text: t('common.cancel'), onPress: () => resolve(false) },
+              { text: t('common.delete'), style: 'destructive', onPress: () => resolve(true) },
             ]);
           });
     if (!confirmed) return;
@@ -182,9 +182,7 @@ export default function RecurringManage() {
           <View style={styles.empty}>
             <Icon name="CalendarDays" size={56} color="#d1d5db" />
             <Text style={styles.emptyTitle}>{t('recurring.emptyTitle')}</Text>
-            <Text style={styles.emptyDesc}>
-              Tạo quy tắc tự động ghi: lương hàng tháng, tiền nhà, gói data...
-            </Text>
+            <Text style={styles.emptyDesc}>{t('recurring.emptyDesc')}</Text>
             <TouchableOpacity
               style={[styles.addBtn, { backgroundColor: palette.primary }]}
               onPress={openCreate}
@@ -210,7 +208,7 @@ export default function RecurringManage() {
                     {r.type === 'expense' ? '-' : '+'}
                     {formatNumber(r.amount)}đ · {frequencyLabel(r.frequency)}
                   </Text>
-                  <Text style={styles.ruleNext}>Kế tiếp: {formatDate(r.next_run, 'dd/MM/yyyy')}</Text>
+                  <Text style={styles.ruleNext}>{t('recurring.next', { date: formatDate(r.next_run, 'dd/MM/yyyy') })}</Text>
                 </TouchableOpacity>
                 <Switch
                   value={r.active === 1}
@@ -232,7 +230,7 @@ export default function RecurringManage() {
             <View style={styles.modalCard}>
               <ScrollView keyboardShouldPersistTaps="handled">
                 <Text style={styles.modalTitle}>
-                  {editing.id ? 'Sửa quy tắc' : 'Tạo quy tắc lặp'}
+                  {editing.id ? t('recurring.editTitle') : t('recurring.createTitle')}
                 </Text>
 
                 <View style={styles.typeTabs}>
@@ -244,7 +242,7 @@ export default function RecurringManage() {
                     }}
                   >
                     <Text style={[styles.typeText, editing.type === 'expense' && styles.typeTextActive]}>
-                      Chi
+                      {t('common.expense')}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -255,7 +253,7 @@ export default function RecurringManage() {
                     }}
                   >
                     <Text style={[styles.typeText, editing.type === 'income' && styles.typeTextActive]}>
-                      Thu
+                      {t('common.income')}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -282,7 +280,7 @@ export default function RecurringManage() {
                   style={styles.input}
                   value={editing.note}
                   onChangeText={(v) => setEditing({ ...editing, note: v })}
-                  placeholder="VD: Lương tháng, Tiền nhà..."
+                  placeholder={t('recurring.notePlaceholder')}
                   placeholderTextColor="#9ca3af"
                   maxLength={200}
                 />
@@ -337,7 +335,7 @@ export default function RecurringManage() {
                   })}
                 </View>
 
-                <Text style={styles.label}>Ngày bắt đầu / Lần kế tiếp</Text>
+                <Text style={styles.label}>{t('recurring.nextRunLabel')}</Text>
                 <DatePickerField
                   value={editing.next_run}
                   onChange={(d) => setEditing({ ...editing, next_run: d })}
@@ -353,7 +351,7 @@ export default function RecurringManage() {
                     onPress={save}
                     disabled={saving}
                   >
-                    <Text style={styles.saveText}>{saving ? 'Đang lưu...' : 'Lưu'}</Text>
+                    <Text style={styles.saveText}>{saving ? t('common.saving') : t('common.save')}</Text>
                   </TouchableOpacity>
                 </View>
               </ScrollView>
