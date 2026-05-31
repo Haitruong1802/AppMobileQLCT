@@ -578,6 +578,7 @@ export const zh = {
   'wallets.totalSub': '{n} 个钱包',
   'wallets.totalSubOne': '1 个钱包',
   'wallets.defaultTag': '默认',
+  'wallet.default': '主钱包',
   'wallets.addBtn': '添加钱包',
   'wallets.transferBtn': '转账',
   'wallets.editTitle': '编辑钱包',

@@ -578,6 +578,7 @@ export const en = {
   'wallets.totalSub': '{n} wallets',
   'wallets.totalSubOne': '1 wallet',
   'wallets.defaultTag': 'default',
+  'wallet.default': 'Main wallet',
   'wallets.addBtn': 'Add wallet',
   'wallets.transferBtn': 'Transfer',
   'wallets.editTitle': 'Edit wallet',

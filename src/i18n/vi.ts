@@ -575,6 +575,7 @@ export const vi = {
   'wallets.totalSub': '{n} ví',
   'wallets.totalSubOne': '1 ví',
   'wallets.defaultTag': 'mặc định',
+  'wallet.default': 'Ví chính',
   'wallets.addBtn': 'Thêm ví',
   'wallets.transferBtn': 'Chuyển tiền',
   'wallets.editTitle': 'Sửa ví',

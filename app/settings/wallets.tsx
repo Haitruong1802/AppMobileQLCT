@@ -18,6 +18,7 @@ import { Icon, ICONS } from '../../src/components/Icon';
 import { useStore } from '../../src/store/useStore';
 import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
+import { displayWalletName } from '../../src/i18n/walletName';
 import { formatNumber } from '../../src/utils/format';
 import { todayISO } from '../../src/utils/date';
 import { Wallet, getWalletBalance, transferBetweenWallets, setDefaultWallet } from '../../src/db';
@@ -230,7 +231,7 @@ export default function WalletsManage() {
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.walletName} numberOfLines={1}>
-                  {w.name}
+                  {displayWalletName(w)}
                   {w.is_default === 1 ? <Text style={styles.defaultTag}> · {t('wallets.defaultTag')}</Text> : null}
                 </Text>
                 <Text style={[styles.walletBalance, { color: bal >= 0 ? '#111827' : '#dc2626' }]}>
@@ -397,7 +398,7 @@ export default function WalletsManage() {
                       >
                         <Icon name={w.icon} size={18} color={w.color} />
                         <Text style={styles.walletPickName} numberOfLines={1}>
-                          {w.name}
+                          {displayWalletName(w)}
                         </Text>
                       </TouchableOpacity>
                     );
@@ -419,7 +420,7 @@ export default function WalletsManage() {
                       >
                         <Icon name={w.icon} size={18} color={w.color} />
                         <Text style={styles.walletPickName} numberOfLines={1}>
-                          {w.name}
+                          {displayWalletName(w)}
                         </Text>
                       </TouchableOpacity>
                     );

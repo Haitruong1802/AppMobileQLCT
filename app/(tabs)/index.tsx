@@ -36,6 +36,7 @@ import { getStreak, StreakState, badgeLabel } from '../../src/services/streak';
 import { t } from '../../src/i18n';
 import { useLocale } from '../../src/i18n/useLocale';
 import { displayCategoryName } from '../../src/i18n/categoryName';
+import { displayWalletName } from '../../src/i18n/walletName';
 
 export default function NhapVao() {
   const [type, setType] = useState<'expense' | 'income'>('expense');
@@ -532,7 +533,7 @@ export default function NhapVao() {
                       style={[styles.walletPillText, selected && { color: w.color, fontWeight: '700' }]}
                       numberOfLines={1}
                     >
-                      {w.name}
+                      {displayWalletName(w)}
                     </Text>
                   </TouchableOpacity>
                 );

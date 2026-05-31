@@ -32,6 +32,7 @@ import { DatePickerField } from '../../src/components/DatePickerField';
 import { useT } from '../../src/i18n/useT';
 import { t } from '../../src/i18n';
 import { displayCategoryName } from '../../src/i18n/categoryName';
+import { displayWalletName } from '../../src/i18n/walletName';
 import { canCreate } from '../../src/services/premium';
 import { usePremiumTier } from '../../src/store/usePremium';
 import { ProUpgradeModal } from '../../src/components/ProUpgradeModal';
@@ -465,7 +466,7 @@ export default function BillsManage() {
                     >
                       <Icon name={w.icon} size={16} color={w.color} />
                       <Text style={styles.walletPickName} numberOfLines={1}>
-                        {w.name}
+                        {displayWalletName(w)}
                       </Text>
                     </TouchableOpacity>
                   );

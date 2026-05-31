@@ -24,6 +24,7 @@ import { useTheme } from '../../src/store/useTheme';
 import { useT } from '../../src/i18n/useT';
 import { t } from '../../src/i18n';
 import { displayCategoryName } from '../../src/i18n/categoryName';
+import { displayWalletName } from '../../src/i18n/walletName';
 
 export default function EditTransaction() {
   useT();
@@ -220,7 +221,7 @@ export default function EditTransaction() {
                   >
                     <Icon name={w.icon} size={14} color={selected ? w.color : '#6b7280'} />
                     <Text style={[styles.walletPillText, selected && { color: w.color, fontWeight: '700' }]} numberOfLines={1}>
-                      {w.name}
+                      {displayWalletName(w)}
                     </Text>
                   </TouchableOpacity>
                 );
