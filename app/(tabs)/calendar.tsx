@@ -68,8 +68,8 @@ export default function Calendar() {
     const qNum = parseInt(q.replace(/\D/g, ''), 10);
     return list.filter((t) => {
       const cat = catMap[t.category_id];
-      const noteMatch = (t.note || '').toLowerCase().includes(q);
-      const catMatch = (cat?.name || '').toLowerCase().includes(q);
+      const noteMatch = (displayTxNote(t.note) || '').toLowerCase().includes(q);
+      const catMatch = (cat ? displayCategoryName(cat).toLowerCase() : '').includes(q);
       // v3.65 — M1: threshold qNum >= 1000 để tránh search "1" match cả 10.000đ, 1.000.000đ...
       const amtMatch = qNum >= 1000 && String(t.amount).includes(String(qNum));
       return noteMatch || catMatch || amtMatch;
