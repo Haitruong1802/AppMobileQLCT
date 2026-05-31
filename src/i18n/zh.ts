@@ -211,6 +211,7 @@ export const zh = {
   'recurring.freqMonthly': '每月',
   'recurring.freqQuarterly': '每 3 个月',
   'recurring.freqYearly': '每年',
+  'recurring.fallbackNote': '[定期]',
   'recurring.createFirst': '创建第一条规则',
   'recurring.amount': '金额',
   'recurring.note': '备注',

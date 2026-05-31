@@ -77,11 +77,13 @@ export async function fireDueRules(bookId?: number): Promise<number> {
     let safety = 0;
     while (nextRun <= today && safety < 36) {
       try {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const { t } = require('../i18n') as typeof import('../i18n');
         await addTransaction({
           amount: r.amount,
           category_id: r.category_id,
           type: r.type,
-          note: r.note || '[Lặp]',
+          note: r.note || t('recurring.fallbackNote'),
           date: nextRun,
           source: 'recurring',
           source_id: r.id,

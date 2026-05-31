@@ -211,6 +211,7 @@ export const vi = {
   'recurring.freqMonthly': 'Hàng tháng',
   'recurring.freqQuarterly': '3 tháng một lần',
   'recurring.freqYearly': 'Hàng năm',
+  'recurring.fallbackNote': '[Lặp]',
   'recurring.createFirst': 'Tạo quy tắc đầu tiên',
   'recurring.amount': 'Số tiền',
   'recurring.note': 'Ghi chú',

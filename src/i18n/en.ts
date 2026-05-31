@@ -211,6 +211,7 @@ export const en = {
   'recurring.freqMonthly': 'Monthly',
   'recurring.freqQuarterly': 'Every 3 months',
   'recurring.freqYearly': 'Yearly',
+  'recurring.fallbackNote': '[Recurring]',
   'recurring.createFirst': 'Create your first rule',
   'recurring.amount': 'Amount',
   'recurring.note': 'Note',
