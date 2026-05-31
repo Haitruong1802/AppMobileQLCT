@@ -445,9 +445,9 @@ export default function BillsManage() {
         {paying ? (
           <Pressable style={styles.modalBgCenter} onPress={() => setPaying(null)}>
             <Pressable style={styles.modalCardSmall} onPress={() => {}}>
-              <Text style={styles.modalTitle}>Thanh toán "{paying.bill.name}"</Text>
+              <Text style={styles.modalTitle}>{t('bills.payTitle', { name: paying.bill.name })}</Text>
               <Text style={styles.payHint}>
-                Sẽ tạo giao dịch chi {formatNumber(paying.bill.amount)}đ vào ví bên dưới.
+                {t('bills.payHint', { amount: formatNumber(paying.bill.amount) })}
               </Text>
 
               <Text style={styles.label}>{t('bills.deductWallet')}</Text>

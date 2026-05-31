@@ -326,6 +326,8 @@ export const zh = {
   'bills.statusToday': '今日到期',
   'bills.statusDays': '还有 {days} 天',
   'bills.statusPaid': '已支付',
+  'bills.payTitle': '支付"{name}"',
+  'bills.payHint': '将从下方钱包创建一笔 {amount}đ 支出。',
   'goals.title': '储蓄目标',
   'goals.addMoney': '存入',
   'goals.fundGeneral': '通用储蓄金',

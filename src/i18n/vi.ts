@@ -304,6 +304,8 @@ export const vi = {
   'bills.statusToday': 'Đến hạn hôm nay',
   'bills.statusDays': 'Còn {days} ngày',
   'bills.statusPaid': 'Đã thanh toán',
+  'bills.payTitle': 'Thanh toán "{name}"',
+  'bills.payHint': 'Sẽ tạo giao dịch chi {amount}đ vào ví bên dưới.',
   'goals.title': 'Mục tiêu tiết kiệm',
   'goals.addMoney': 'Cộng tiền',
   'goals.fundGeneral': 'Quỹ tiết kiệm chung',

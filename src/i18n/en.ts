@@ -326,6 +326,8 @@ export const en = {
   'bills.statusToday': 'Due today',
   'bills.statusDays': '{days} days left',
   'bills.statusPaid': 'Paid',
+  'bills.payTitle': 'Pay "{name}"',
+  'bills.payHint': 'This creates an expense of {amount}đ from the wallet below.',
   'goals.title': 'Savings goals',
   'goals.addMoney': 'Add money',
   'goals.fundGeneral': 'General savings fund',
