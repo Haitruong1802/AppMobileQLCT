@@ -87,7 +87,7 @@ export default function EditTransaction() {
       router.back();
     } catch (e: any) {
       // v3.57 — Catch lỗi từ store guard (vd date tương lai) để user thấy feedback
-      notify(e?.message || 'Lỗi khi cập nhật giao dịch');
+      notify(e?.message || t('edit.errUpdate'));
       setSaving(false);
     }
   }

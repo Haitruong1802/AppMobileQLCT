@@ -32,9 +32,9 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <View style={styles.wrap}>
           <Icon name="AlertCircle" size={56} color="#ef4444" />
-          <Text style={styles.title}>Bux2 gặp trục trặc rồi</Text>
+          <Text style={styles.title}>{t('errBoundary.title')}</Text>
           <Text style={styles.message}>{this.state.message}</Text>
-          <Text style={styles.hint}>Đóng app rồi mở lại, hoặc bấm Reset bên dưới.</Text>
+          <Text style={styles.hint}>{t('errBoundary.hint')}</Text>
           <TouchableOpacity style={styles.btn} onPress={this.reset}>
             <Text style={styles.btnText}>{t('common.retry')}</Text>
           </TouchableOpacity>

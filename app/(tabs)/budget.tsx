@@ -99,20 +99,20 @@ export default function Budget() {
 
         await loadBudgets(month);
         setSavingsTarget(0);
-        if (Platform.OS === 'web') alert('Đã xoá toàn bộ ngân sách tháng này');
+        if (Platform.OS === 'web') alert(t('budget.toastReset'));
       } catch (e: any) {
-        Alert.alert('', `Lỗi: ${e?.message || 'unknown'}`);
+        Alert.alert('', t('common.errorPrefix', { msg: e?.message || 'unknown' }));
       }
     };
     if (Platform.OS === 'web') {
-      if (confirm('Xoá hết ngân sách tháng này?')) proceed();
+      if (confirm(t('budget.confirmResetWeb'))) proceed();
     } else {
       Alert.alert(
-        'Đặt lại ngân sách',
-        'Sẽ xoá toàn bộ ngân sách tháng này. Tiếp tục?',
+        t('budget.resetTitle'),
+        t('budget.resetBody'),
         [
-          { text: 'Huỷ', style: 'cancel' },
-          { text: 'Xoá', style: 'destructive', onPress: proceed },
+          { text: t('common.cancel'), style: 'cancel' },
+          { text: t('common.delete'), style: 'destructive', onPress: proceed },
         ]
       );
     }
@@ -312,7 +312,7 @@ export default function Budget() {
         {totalBudget > 0 ? (
           <TouchableOpacity style={styles.resetBtn} onPress={resetBudgets}>
             <Icon name="Trash2" size={14} color="#dc2626" />
-            <Text style={styles.resetText}>Đặt lại ngân sách (xoá hết)</Text>
+            <Text style={styles.resetText}>{t('budget.resetBtn')}</Text>
           </TouchableOpacity>
         ) : null}
       </ScrollView>
