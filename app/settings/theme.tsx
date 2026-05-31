@@ -43,7 +43,7 @@ export default function ThemeScreen() {
     if (p.key === currentKey) return;
     try {
       await updateSetting('theme', p.key);
-      notify(`Đã đổi sang theme ${p.label}.`, 'success');
+      notify(t('theme.switchedTo', { name: p.label }), 'success');
     } catch {
       notify(t('err.themeChangeFailed'), 'error');
     }

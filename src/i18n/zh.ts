@@ -78,6 +78,7 @@ export const zh = {
   'theme.subtitle': '自定义界面',
   'theme.basic': '基础',
   'theme.premium': '高级',
+  'theme.switchedTo': '已切换至 {name} 主题。',
   'premium.unlockingAll': '所有功能已解锁',
   'premium.comingSoon': '即将推出',
   'premium.benefitsCurrent': '当前权益',

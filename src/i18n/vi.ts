@@ -78,6 +78,7 @@ export const vi = {
   'theme.subtitle': 'Tùy chỉnh giao diện',
   'theme.basic': 'Cơ bản',
   'theme.premium': 'Cao cấp',
+  'theme.switchedTo': 'Đã đổi sang theme {name}.',
   'premium.unlockingAll': 'Đang mở khoá toàn bộ',
   'premium.comingSoon': 'Sắp ra mắt',
   'premium.benefitsCurrent': 'Quyền lợi đang dùng',

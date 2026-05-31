@@ -78,6 +78,7 @@ export const en = {
   'theme.subtitle': 'Customize the look',
   'theme.basic': 'Basic',
   'theme.premium': 'Premium',
+  'theme.switchedTo': 'Switched to {name} theme.',
   'premium.unlockingAll': 'All features unlocked',
   'premium.comingSoon': 'Coming soon',
   'premium.benefitsCurrent': 'Active benefits',
