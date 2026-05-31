@@ -118,20 +118,20 @@ export default function CategoriesManage() {
   }
 
   async function doDelete(c: Category) {
+    const catName = displayCategoryName(c);
+    const title = t('categories.confirmDeleteTitle', { name: catName });
+    const body =
+      c.is_default === 1
+        ? t('categories.confirmDeleteDefault')
+        : t('categories.confirmDeleteCustom');
     const confirmed =
       Platform.OS === 'web'
-        ? confirm(`Xoá "${c.name}"? ${c.is_default === 1 ? 'Default sẽ chỉ bị ẩn.' : 'Transactions sẽ chuyển sang "Khác".'}`)
+        ? confirm(`${title}\n${body}`)
         : await new Promise<boolean>((resolve) => {
-            Alert.alert(
-              `Xoá "${c.name}"?`,
-              c.is_default === 1
-                ? 'Đây là danh mục mặc định, sẽ chỉ bị ẩn (có thể bật lại).'
-                : 'Các giao dịch thuộc danh mục này sẽ chuyển sang "Khác".',
-              [
-                { text: 'Huỷ', onPress: () => resolve(false) },
-                { text: 'Xoá', style: 'destructive', onPress: () => resolve(true) },
-              ]
-            );
+            Alert.alert(title, body, [
+              { text: t('common.cancel'), onPress: () => resolve(false) },
+              { text: t('common.delete'), style: 'destructive', onPress: () => resolve(true) },
+            ]);
           });
     if (!confirmed) return;
     const res = await deleteCategoryAction(c.id);
@@ -139,8 +139,8 @@ export default function CategoriesManage() {
     if (res.deleted) {
       notify(
         res.reassigned > 0
-          ? `Đã xoá. ${res.reassigned} giao dịch chuyển sang "Khác"`
-          : 'Đã xoá'
+          ? t('categories.toastDeletedReassigned', { count: res.reassigned })
+          : t('categories.toastDeleted')
       );
     } else {
       notify(t('msg.catHidden'));
@@ -168,7 +168,7 @@ export default function CategoriesManage() {
           onPress={() => setFilter('expense')}
         >
           <Text style={[styles.typeText, filter === 'expense' && styles.typeTextActive]}>
-            Chi tiêu
+            {t('common.expense')}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -176,7 +176,7 @@ export default function CategoriesManage() {
           onPress={() => setFilter('income')}
         >
           <Text style={[styles.typeText, filter === 'income' && styles.typeTextActive]}>
-            Thu nhập
+            {t('common.income')}
           </Text>
         </TouchableOpacity>
       </View>
@@ -192,8 +192,8 @@ export default function CategoriesManage() {
               <View style={{ flex: 1 }}>
                 <Text style={styles.itemName}>
                   {displayCategoryName(c)}
-                  {c.is_default === 1 ? <Text style={styles.defaultTag}> · mặc định</Text> : null}
-                  {hidden ? <Text style={styles.hiddenTag}> · đã ẩn</Text> : null}
+                  {c.is_default === 1 ? <Text style={styles.defaultTag}> · {t('categories.defaultTag')}</Text> : null}
+                  {hidden ? <Text style={styles.hiddenTag}> · {t('categories.hiddenTag')}</Text> : null}
                 </Text>
               </View>
               <TouchableOpacity onPress={() => toggleVisible(c)} style={styles.actionBtn}>
@@ -210,7 +210,7 @@ export default function CategoriesManage() {
         })}
         <TouchableOpacity style={[styles.addBtn, { backgroundColor: palette.primary }]} onPress={openCreate}>
           <Icon name="Sparkles" size={18} color="#fff" />
-          <Text style={styles.addBtnText}>Thêm danh mục {filter === 'expense' ? 'chi' : 'thu'}</Text>
+          <Text style={styles.addBtnText}>{filter === 'expense' ? t('categories.addExpense') : t('categories.addIncome')}</Text>
         </TouchableOpacity>
       </ScrollView>
 
@@ -278,7 +278,7 @@ export default function CategoriesManage() {
                       onPress={() => setEditing({ ...editing, type: 'expense' })}
                     >
                       <Text style={[styles.typeText, editing.type === 'expense' && styles.typeTextActive]}>
-                        Chi tiêu
+                        {t('common.expense')}
                       </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -286,7 +286,7 @@ export default function CategoriesManage() {
                       onPress={() => setEditing({ ...editing, type: 'income' })}
                     >
                       <Text style={[styles.typeText, editing.type === 'income' && styles.typeTextActive]}>
-                        Thu nhập
+                        {t('common.income')}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -302,7 +302,7 @@ export default function CategoriesManage() {
                   onPress={save}
                   disabled={saving}
                 >
-                  <Text style={styles.saveText}>{saving ? 'Đang lưu...' : 'Lưu'}</Text>
+                  <Text style={styles.saveText}>{saving ? t('common.saving') : t('common.save')}</Text>
                 </TouchableOpacity>
               </View>
               </ScrollView>
