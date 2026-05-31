@@ -297,12 +297,12 @@ export default function StreakScreen() {
         >
           <Pressable style={styles.renameCard} onPress={() => {}}>
             <Text style={styles.renameTitle}>{t('streak.petRenameTitle')}</Text>
-            <Text style={styles.renameDesc}>Tên gọi yêu thương, 16 ký tự</Text>
+            <Text style={styles.renameDesc}>{t('streak.petRenameDesc')}</Text>
             <TextInput
               style={styles.renameInput}
               value={petNameDraft}
               onChangeText={setPetNameDraft}
-              placeholder={settings.pet_name || 'vd: Mochi, Bé Sol, Bú Bú...'}
+              placeholder={settings.pet_name || t('streak.petRenamePlaceholder')}
               placeholderTextColor="#9ca3af"
               maxLength={16}
               autoFocus

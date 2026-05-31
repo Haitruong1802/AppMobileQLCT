@@ -171,6 +171,8 @@ export const vi = {
   'goals.toastUpdated': 'Đã cập nhật mục tiêu',
   'input.autoFilling': 'Đang phân tích...',
   'streak.namePetCta': 'Đặt tên cho pet',
+  'streak.petRenameDesc': 'Tên gọi yêu thương, 16 ký tự',
+  'streak.petRenamePlaceholder': 'vd: Mochi, Bé Sol, Bú Bú...',
   'streak.badgeUnlock': '{emoji} Mở khoá: {name}! Streak {days} ngày',
   'streak.freezeActivated': '🛡️ Freeze Pass kích hoạt, streak {days} vẫn an toàn',
   'streak.dailyToast': '🔥 Streak {days} ngày liên tiếp!',

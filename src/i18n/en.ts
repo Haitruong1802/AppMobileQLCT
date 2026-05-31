@@ -171,6 +171,8 @@ export const en = {
   'goals.toastUpdated': 'Goal updated',
   'input.autoFilling': 'Analyzing...',
   'streak.namePetCta': 'Name your pet',
+  'streak.petRenameDesc': 'A loving nickname, up to 16 characters',
+  'streak.petRenamePlaceholder': 'e.g. Mochi, Sol, Buu...',
   'streak.badgeUnlock': '{emoji} Unlocked: {name}! Streak {days} days',
   'streak.freezeActivated': '🛡️ Freeze Pass used, streak {days} still safe',
   'streak.dailyToast': '🔥 Streak {days} days in a row!',

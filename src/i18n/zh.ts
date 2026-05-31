@@ -171,6 +171,8 @@ export const zh = {
   'goals.toastUpdated': '已更新目标',
   'input.autoFilling': '分析中...',
   'streak.namePetCta': '给宠物取名',
+  'streak.petRenameDesc': '亲切的昵称，最多 16 个字符',
+  'streak.petRenamePlaceholder': '例：Mochi、小布、Bu Bu……',
   'streak.badgeUnlock': '{emoji} 解锁：{name}！连续 {days} 天',
   'streak.freezeActivated': '🛡️ Freeze Pass 已用，连续 {days} 仍保留',
   'streak.dailyToast': '🔥 连续 {days} 天！',
