@@ -320,6 +320,12 @@ export const en = {
   'bills.repeatYearly': 'Yearly',
   'bills.categoryLabel': 'Category (optional)',
   'bills.autoCat': 'Auto',
+  'bills.filterUnpaid': 'Unpaid',
+  'bills.filterPaid': 'Paid',
+  'bills.statusOverdue': 'Overdue {days} days',
+  'bills.statusToday': 'Due today',
+  'bills.statusDays': '{days} days left',
+  'bills.statusPaid': 'Paid',
   'goals.title': 'Savings goals',
   'goals.addMoney': 'Add money',
   'goals.fundGeneral': 'General savings fund',
@@ -592,6 +598,7 @@ export const en = {
   'safe.subDefault': 'Relax, {days} days until end of month',
   'safe.overspend': "You've gone slightly over this month",
   'safe.overspendSub': 'Expenses just nudged past income. Easy spending for {days} more days 💛',
+  'safe.overspendSubOne': 'Expenses just nudged past income. Easy spending for 1 more day 💛',
 
   // ── Language screen ──
   'language.title': 'Language',

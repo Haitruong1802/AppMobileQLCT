@@ -298,6 +298,12 @@ export const vi = {
   'bills.repeatYearly': 'Hàng năm',
   'bills.categoryLabel': 'Danh mục (tuỳ chọn)',
   'bills.autoCat': 'Tự động',
+  'bills.filterUnpaid': 'Chưa trả',
+  'bills.filterPaid': 'Đã trả',
+  'bills.statusOverdue': 'Quá hạn {days} ngày',
+  'bills.statusToday': 'Đến hạn hôm nay',
+  'bills.statusDays': 'Còn {days} ngày',
+  'bills.statusPaid': 'Đã thanh toán',
   'goals.title': 'Mục tiêu tiết kiệm',
   'goals.addMoney': 'Cộng tiền',
   'goals.fundGeneral': 'Quỹ tiết kiệm chung',
@@ -538,6 +544,7 @@ export const vi = {
   'safe.subDefault': 'Yên tâm, còn {days} ngày tới cuối tháng',
   'safe.overspend': 'Tháng này hơi quá tay rồi',
   'safe.overspendSub': 'Chi nhỉnh hơn thu một chút. {days} ngày tới mình nhẹ tay là cân bằng.',
+  'safe.overspendSubOne': 'Chi nhỉnh hơn thu một chút. Ngày mai mình nhẹ tay là cân bằng.',
 
   // ── Language screen ──
   'language.title': 'Ngôn ngữ',

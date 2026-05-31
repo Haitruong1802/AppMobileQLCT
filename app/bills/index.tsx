@@ -219,7 +219,7 @@ export default function BillsManage() {
                 onPress={() => setFilter('unpaid')}
               >
                 <Text style={[styles.filterText, filter === 'unpaid' && styles.filterTextActive]}>
-                  Chưa trả ({bills.filter((b) => !b.paid_at).length})
+                  {t('bills.filterUnpaid')} ({bills.filter((b) => !b.paid_at).length})
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -227,7 +227,7 @@ export default function BillsManage() {
                 onPress={() => setFilter('paid')}
               >
                 <Text style={[styles.filterText, filter === 'paid' && styles.filterTextActive]}>
-                  Đã trả ({bills.filter((b) => !!b.paid_at).length})
+                  {t('bills.filterPaid')} ({bills.filter((b) => !!b.paid_at).length})
                 </Text>
               </TouchableOpacity>
             </View>
@@ -242,19 +242,19 @@ export default function BillsManage() {
             let statusLabel = '';
             let statusColor = '#6b7280';
             if (isPaid) {
-              statusLabel = 'Đã thanh toán';
+              statusLabel = t('bills.statusPaid');
               statusColor = palette.income;
             } else if (isOverdue) {
-              statusLabel = `Quá hạn ${Math.abs(days)} ngày`;
+              statusLabel = t('bills.statusOverdue', { days: Math.abs(days) });
               statusColor = palette.expense;
             } else if (isToday) {
-              statusLabel = 'Đến hạn hôm nay';
+              statusLabel = t('bills.statusToday');
               statusColor = '#f59e0b';
             } else if (isSoon) {
-              statusLabel = `Còn ${days} ngày`;
+              statusLabel = t('bills.statusDays', { days });
               statusColor = '#f59e0b';
             } else {
-              statusLabel = `Còn ${days} ngày`;
+              statusLabel = t('bills.statusDays', { days });
               statusColor = '#6b7280';
             }
 

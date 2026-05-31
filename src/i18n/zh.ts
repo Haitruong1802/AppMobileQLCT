@@ -320,6 +320,12 @@ export const zh = {
   'bills.repeatYearly': '每年',
   'bills.categoryLabel': '分类（可选）',
   'bills.autoCat': '自动',
+  'bills.filterUnpaid': '未支付',
+  'bills.filterPaid': '已支付',
+  'bills.statusOverdue': '逾期 {days} 天',
+  'bills.statusToday': '今日到期',
+  'bills.statusDays': '还有 {days} 天',
+  'bills.statusPaid': '已支付',
   'goals.title': '储蓄目标',
   'goals.addMoney': '存入',
   'goals.fundGeneral': '通用储蓄金',
@@ -592,6 +598,7 @@ export const zh = {
   'safe.subDefault': '放心,距月底还有 {days} 天',
   'safe.overspend': '本月稍微超支了',
   'safe.overspendSub': '支出略超收入。接下来 {days} 天省着花吧 💛',
+  'safe.overspendSubOne': '支出略超收入。明天省着花吧 💛',
 
   // ── Language ──
   'language.title': '语言',

@@ -68,7 +68,7 @@ export function SafeToSpendCard({
           {formatNumber(data.monthExpense - data.monthIncome)}đ
         </Text>
         <Text style={[styles.subText, { color: SEMANTIC.danger.text }]}>
-          {t('safe.overspendSub', { days: data.daysRemaining })}
+          {t(data.daysRemaining === 1 ? 'safe.overspendSubOne' : 'safe.overspendSub', { days: data.daysRemaining })}
         </Text>
       </TouchableOpacity>
     );
