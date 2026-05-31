@@ -43,19 +43,21 @@ export function computeNextRun(currentRun: string, frequency: Frequency): string
 }
 
 export function frequencyLabel(f: Frequency): string {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { t } = require('../i18n') as typeof import('../i18n');
   switch (f) {
     case 'daily':
-      return 'Hàng ngày';
+      return t('recurring.freqDaily');
     case 'weekly':
-      return 'Hàng tuần';
+      return t('recurring.freqWeekly');
     case 'biweekly':
-      return '2 tuần một lần';
+      return t('recurring.freqBiweekly');
     case 'monthly':
-      return 'Hàng tháng';
+      return t('recurring.freqMonthly');
     case 'quarterly':
-      return '3 tháng một lần';
+      return t('recurring.freqQuarterly');
     case 'yearly':
-      return 'Hàng năm';
+      return t('recurring.freqYearly');
   }
 }
 
