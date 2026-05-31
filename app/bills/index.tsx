@@ -161,20 +161,20 @@ export default function BillsManage() {
       await refresh();
       await loadTransactions();
       setPaying(null);
-      notify(`Đã thanh toán "${paying.bill.name}"`);
+      notify(t('bills.toastPaid', { name: paying.bill.name }));
     } catch (e: any) {
-      notify(`Lỗi: ${e?.message || 'unknown'}`);
+      notify(t('common.errorPrefix', { msg: e?.message || 'unknown' }));
     }
   }
 
   async function doDelete(b: Bill) {
     const confirmed =
       Platform.OS === 'web'
-        ? confirm(`Xoá hoá đơn "${b.name}"?`)
+        ? confirm(t('bills.confirmDelete', { name: b.name }))
         : await new Promise<boolean>((resolve) => {
-            Alert.alert('Xoá', `Xoá hoá đơn "${b.name}"?`, [
-              { text: 'Huỷ', onPress: () => resolve(false) },
-              { text: 'Xoá', style: 'destructive', onPress: () => resolve(true) },
+            Alert.alert(t('common.delete'), t('bills.confirmDelete', { name: b.name }), [
+              { text: t('common.cancel'), onPress: () => resolve(false) },
+              { text: t('common.delete'), style: 'destructive', onPress: () => resolve(true) },
             ]);
           });
     if (!confirmed) return;
