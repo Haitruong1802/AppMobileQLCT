@@ -2,6 +2,7 @@
 import { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { useTheme } from '../store/useTheme';
+import { t } from '../i18n';
 
 type DayData = {
   date: string; // YYYY-MM-DD
@@ -17,11 +18,13 @@ interface Props {
 }
 
 // v3.63 — Monday-first để consistent với StreakBadge week strip (services/streak.ts:weekDays)
-const DAY_LABELS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
+const DAY_LABEL_KEYS = ['day.short.mon', 'day.short.tue', 'day.short.wed', 'day.short.thu', 'day.short.fri', 'day.short.sat', 'day.short.sun'];
 
 function shortAmount(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}tr`;
-  if (n >= 1_000) return `${Math.round(n / 1_000)}k`;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { t } = require('../i18n') as typeof import('../i18n');
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}${t('amount.short.million')}`;
+  if (n >= 1_000) return `${Math.round(n / 1_000)}${t('amount.short.thousand')}`;
   return String(n);
 }
 
@@ -61,9 +64,9 @@ export function CalendarGrid({ month, data, selectedDate, onSelectDate }: Props)
     <View style={styles.wrap}>
       {/* Header weekdays */}
       <View style={styles.headerRow}>
-        {DAY_LABELS.map((d, i) => (
-          <View key={d} style={[styles.headerCell, { width: cellW }]}>
-            <Text style={[styles.headerText, i === 0 && { color: palette.expense }]}>{d}</Text>
+        {DAY_LABEL_KEYS.map((key, i) => (
+          <View key={key} style={[styles.headerCell, { width: cellW }]}>
+            <Text style={[styles.headerText, i === 0 && { color: palette.expense }]}>{t(key)}</Text>
           </View>
         ))}
       </View>
