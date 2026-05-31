@@ -132,7 +132,7 @@ export default function NhapVao() {
           if (activeGoals.length === 1) {
             setAllocatedGoalLabel(`"${activeGoals[0].name}"`);
           } else if (activeGoals.length > 1) {
-            setAllocatedGoalLabel(`${activeGoals.length} mục tiêu`);
+            setAllocatedGoalLabel(t('input.allocGoalsCount', { n: activeGoals.length }));
           }
         }
         // Hôm qua đã được auto-process dư bao nhiêu (manual_added giờ chứa số tự cộng)
@@ -167,11 +167,11 @@ export default function NhapVao() {
     const d = lastStreakDelta;
     if (d.newBadge !== null) {
       const info = badgeLabel(d.newBadge);
-      notify(`${info.emoji} Mở khoá: ${info.name}! Streak ${d.currentStreak} ngày`);
+      notify(t('streak.badgeUnlock', { emoji: info.emoji, name: info.name, days: d.currentStreak }));
     } else if (d.usedFreezePass) {
-      notify(`🛡️ Freeze Pass kích hoạt, streak ${d.currentStreak} vẫn an toàn`);
+      notify(t('streak.freezeActivated', { days: d.currentStreak }));
     } else if (d.currentStreak > d.previousStreak && d.currentStreak > 1) {
-      notify(`🔥 Streak ${d.currentStreak} ngày liên tiếp!`);
+      notify(t('streak.dailyToast', { days: d.currentStreak }));
     }
     clearStreakDelta();
   }, [lastStreakDelta, clearStreakDelta]);

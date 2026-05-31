@@ -153,9 +153,9 @@ export default function Goals() {
         await refresh();
         setAddingTo(null);
         if (updated?.completed_at) {
-          notify(`🎉 Đã đạt mục tiêu "${addingTo.goal.name}"!`, 'success');
+          notify(t('goals.toastReached', { name: displayGoalName(addingTo.goal) }), 'success');
         } else {
-          notify(`Đã cộng ${formatNumber(amt)}đ vào "${addingTo.goal.name}"`, 'success');
+          notify(t('goals.toastAdded', { amount: formatNumber(amt), name: displayGoalName(addingTo.goal) }), 'success');
         }
       } catch (e: any) {
         notify(`Lỗi: ${e?.message || 'unknown'}`, 'error');
@@ -164,13 +164,14 @@ export default function Goals() {
   }
 
   async function doDelete(g: SavingsGoal) {
+    const goalName = displayGoalName(g);
     const confirmed =
       Platform.OS === 'web'
-        ? confirm(`Xoá mục tiêu "${g.name}"?`)
+        ? confirm(t('goals.confirmDelete', { name: goalName }))
         : await new Promise<boolean>((resolve) => {
-            Alert.alert('Xoá', `Xoá mục tiêu "${g.name}"?`, [
-              { text: 'Huỷ', onPress: () => resolve(false) },
-              { text: 'Xoá', style: 'destructive', onPress: () => resolve(true) },
+            Alert.alert(t('common.delete'), t('goals.confirmDelete', { name: goalName }), [
+              { text: t('common.cancel'), onPress: () => resolve(false) },
+              { text: t('common.delete'), style: 'destructive', onPress: () => resolve(true) },
             ]);
           });
     if (!confirmed) return;
