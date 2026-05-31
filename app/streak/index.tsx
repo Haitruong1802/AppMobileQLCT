@@ -153,7 +153,7 @@ export default function StreakScreen() {
                   : { color: '#9ca3af', fontStyle: 'italic', fontWeight: '600' },
               ]}
             >
-              {settings.pet_name || 'Đặt tên cho pet'}
+              {settings.pet_name || t('streak.namePetCta')}
             </Text>
             <View style={[styles.stageBadge, { backgroundColor: petStage.color + '20' }]}>
               <Text style={[styles.stageBadgeText, { color: petStage.color }]}>{petStage.name}</Text>

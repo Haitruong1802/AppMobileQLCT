@@ -360,16 +360,16 @@ export default function Settings() {
             const sub = isPro
               ? `${packageLabel(state.package)}${
                   state.isLifetime
-                    ? ' · trọn đời'
+                    ? ` · ${t('settings.lifetime')}`
                     : state.daysLeft !== null && state.daysLeft >= 0
-                    ? ` · còn ${state.daysLeft} ngày`
+                    ? ` · ${t('settings.daysLeft', { days: state.daysLeft })}`
                     : ''
                 }`
-              : 'Đang dùng Free · Nâng cấp để mở khoá tính năng cao cấp';
+              : t('settings.freeUpgradeHint');
             return {
               icon: 'Crown',
               iconColor: isPro ? '#fbbf24' : '#9ca3af',
-              label: isPro ? 'Bux2 Pro' : 'Gói sử dụng',
+              label: isPro ? 'Bux2 Pro' : t('settings.planLabel'),
               sub,
               onPress: () => router.push('/premium'),
               proBadge: isPro,

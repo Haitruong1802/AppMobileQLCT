@@ -153,7 +153,7 @@ export default function EditTransaction() {
   if (!loaded) {
     return (
       <SafeAreaView style={styles.safe} edges={['top']}>
-        <Text style={{ padding: 20 }}>Đang tải...</Text>
+        <Text style={{ padding: 20 }}>{t('common.loading')}</Text>
       </SafeAreaView>
     );
   }

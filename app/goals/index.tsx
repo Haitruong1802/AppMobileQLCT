@@ -135,9 +135,9 @@ export default function Goals() {
         }
         await refresh();
         setEditing(null);
-        notify(editing.id ? 'Đã cập nhật mục tiêu' : 'Đã tạo mục tiêu', 'success');
+        notify(editing.id ? t('goals.toastUpdated') : t('goals.toastCreated'), 'success');
       } catch (e: any) {
-        notify(`Lỗi: ${e?.message || 'unknown'}`, 'error');
+        notify(t('common.errorPrefix', { msg: e?.message || 'unknown' }), 'error');
       }
     });
   }

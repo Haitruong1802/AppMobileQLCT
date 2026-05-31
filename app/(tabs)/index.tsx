@@ -488,7 +488,7 @@ export default function NhapVao() {
             disabled={autoFilling}
             activeOpacity={0.85}
           >
-            <Text style={styles.voiceBtnText}>{autoFilling ? 'Đang phân tích...' : t('input.autoFill')}</Text>
+            <Text style={styles.voiceBtnText}>{autoFilling ? t('input.autoFilling') : t('input.autoFill')}</Text>
           </TouchableOpacity>
         </View>
 
